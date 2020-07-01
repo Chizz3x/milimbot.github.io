@@ -52,3 +52,9 @@
 button {
 	border: none
 }
+
+#main-buttons {
+	height: 40px;
+	width: 180px;
+	border-radius: 10px
+}
