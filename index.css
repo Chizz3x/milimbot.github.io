@@ -18,13 +18,26 @@
 }
 
 #profile {
-	width: auto;
-	margin-left: 20px;
-	margin-top: 20px
+  width: auto;
+  margin-left: 20px;
+  margin-top: 20px
+}
+
+@keyframes avatarFloat {
+	from: {
+		transform-y: translate(-10px)
+	}
+	to: {
+		transform-y: translate(1px)
+	}
 }
 
 #avatar {
-	width: 90px
+  width: 90px;
+  animation-name: avatarFloat;
+  animation-duration: 4s;
+  animation-direction: reverse;
+  animation-iteration-count: infinite;
 }
 
 #milim-name {
