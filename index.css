@@ -38,6 +38,7 @@
 	animation-duration: 4s;
 	animation-direction: alternate;
 	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
 }
 
 #milim-name {
@@ -45,9 +46,11 @@
 	font-size: 40px;
 	color: #e36c5f;
 	text-shadow: 0px 0px 4px #ff8c80;
-  	-webkit-text-stroke-width: 1px;
-  	-webkit-text-stroke-color: black;
-	vertical-align: middle;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	position: absolute;
+	margin-top: 28px;
+	margin-left: 20px;
 }
 
 button,
@@ -64,5 +67,6 @@ button:focus {
 	height: 40px;
 	width: 180px;
 	border-radius: 10px;
-	font-family: Arial
+	font-family: Arial;
+	font-size: 17px
 }
