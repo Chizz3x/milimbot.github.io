@@ -56,8 +56,13 @@ button:focus {
 	outline: none
 }
 
+#main-buttons-box {
+	width: auto
+}
+
 #main-buttons {
 	height: 40px;
 	width: 180px;
-	border-radius: 10px
+	border-radius: 10px;
+	font-family: Arial
 }
