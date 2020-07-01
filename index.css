@@ -10,17 +10,27 @@
 }
 
 #menu {
-	width: 100%;
+	left: 0;
+	right: 0;
 	height: 200px;
+	transition: height 0.5s;
 	z-index: 999;
+	background-color: rgba(5,5,5,0.3);
 	position: fixed;
-	background-color: rgba(5,5,5,0.3)
+	top: 0;
+	overflow: hidden
+}
+
+.menu-shrink {
+	height: 125px !important;
+	transition: height 0.5s
 }
 
 #profile {
 	width: auto;
+	padding-top: 20px;
 	margin-left: 20px;
-	margin-top: 20px
+	position: relative;
 }
 
 @keyframes avatarFloat {
@@ -60,13 +70,80 @@ button:focus {
 }
 
 #main-buttons-box {
-	width: auto
+	width: auto;
+	margin-top: 20px
 }
 
-#main-buttons {
+#btn-1 {
+	background-color: #43b581
+}
+
+#btn-2 {
+	background-color: #7289da
+}
+
+#btn-3 {
+	background-color: rgba(150,150,150)
+}
+
+.main-buttons:hover {
+	background-color: #e36c5f !important;
+	color: white;
+	transition: all 0.35s;
+	transform: translateY(-1.5px);
+}
+
+.main-buttons {
+	transition: all 0.5s;
 	height: 40px;
 	width: 180px;
 	border-radius: 10px;
-	font-family: Arial;
-	font-size: 17px
+	font-family: sans-serif;
+	font-size: 17px;
+	margin-left: 15px;
+	color: rgba(230,230,230);
+	cursor: pointer
 }
+
+#invite-box {
+	width: 100%;
+	height: 500px;
+	background-color: rgba(5,5,5,0.3);
+	margin-top: 250px;
+	position: absolute;
+	display: flex;
+	overflow: hidden;
+	justify-content: center
+}
+
+#invite-container {
+	background-color: red;
+	margin-top: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transform: matrix3d(
+		1 /*y rot*/, 0, 0, 0 /*y smear*/,
+		0, 1, 0, 0 /*x smear*/,
+		0, 0, 1, 0,
+		0 /*x move*/, 0 /*y move*/, 0, 1
+	)
+}
+
+#ring-1 {
+	width: 190px;
+	height: 190px;
+	position: absolute;
+	border-radius: 50%;
+	border: 3px solid red;
+	transform: translateZ(-10px)
+}
+
+#ring-2 {
+	width: 220px;
+	height: 220px;
+	position: absolute;
+	border-radius: 50%;
+	border: 2px solid red;
+	transform: translateZ(-10px)
