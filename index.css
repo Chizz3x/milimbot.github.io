@@ -28,7 +28,7 @@
 		transform: translateY(1px)
 	}
 	to {
-		transform: translateY(-10px)
+		transform: translateY(-5px)
 	}
 }
 
@@ -36,7 +36,7 @@
 	width: 90px;
 	animation-name: avatarFloat;
 	animation-duration: 4s;
-	animation-direction: reverse;
+	animation-direction: alternate;
 	animation-iteration-count: infinite;
 }
 
