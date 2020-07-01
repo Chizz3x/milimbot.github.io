@@ -25,10 +25,10 @@
 
 @keyframes avatarFloat {
 	from: {
-		transformY: translate(-10px)
+		transform: translateY(-10px)
 	}
 	to: {
-		transformY: translate(1px)
+		transform: translateY(1px)
 	}
 }
 
