@@ -51,7 +51,8 @@
 
 button,
 button:focus {
-	border: none
+	border: none;
+	outline: none
 }
 
 #main-buttons {
