@@ -24,11 +24,11 @@
 }
 
 @keyframes avatarFloat {
-	from: {
-		transform: translateY(-10px)
-	}
-	to: {
+	from {
 		transform: translateY(1px)
+	}
+	to {
+		transform: translateY(-10px)
 	}
 }
 
