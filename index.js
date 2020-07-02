@@ -14,8 +14,21 @@ function menuStick() {
   }
 }
 
+function footer() {
+  if(document.body.scrollTop + window.innerHeight >= (document.body.scrollHeight - 50)) {
+    let foot = document.getElementById('footer');
+    if(foot.classList.contains('footer-shrink'))
+      foot.classList.remove('footer-shrink')
+  } else {
+    let foot = document.getElementById('footer');
+    if(!foot.classList.contains('footer-shrink'))
+      foot.classList.add('footer-shrink')
+  }
+}
+
 window.onscroll = function() {
-    menuStick()
+    menuStick();
+    footer()
 }
 
 window.addEventListener('mousemove', e => {
@@ -45,7 +58,9 @@ function editMatr(arr) {
   return newMatr
 }
 
-function activate(bubble) {
+function activate() {
+  let bubble = document.getElementById('invite-bubble');
+
   let ring1 = document.getElementById('ring-1'),
   ring2 = document.getElementById('ring-2')
   ring3 = document.getElementById('ring-3');
@@ -76,13 +91,19 @@ function activate(bubble) {
     document.getElementById('image-8')
   ];
 
-  images[0].style.transform = `matrix3d(${editMatr([[12, 30], [13, 8]])})`;
-  images[1].style.transform = `matrix3d(${editMatr([[12, -10], [13, -5]])})`;
-  images[2].style.transform = `matrix3d(${editMatr([[13, -15]])})`;
-  images[3].style.transform = `matrix3d(${editMatr([[12, 10], [13, -10]])})`
+  images[0].style.transform = `matrix3d(${editMatr([[12, 100], [13, 8]])})`;
+  images[1].style.transform = `matrix3d(${editMatr([[12, -40], [13, -5]])})`;
+  images[2].style.transform = `matrix3d(${editMatr([[12, -40], [13, -20]])})`;
+  images[3].style.transform = `matrix3d(${editMatr([[12, 90], [13, -10]])})`;
+  images[4].style.transform = `matrix3d(${editMatr([[12, 110], [13, 2]])})`;
+  images[5].style.transform = `matrix3d(${editMatr([[12, 30], [13, -30]])})`;
+  images[6].style.transform = `matrix3d(${editMatr([[12, -20], [13, -50]])})`;
+  images[7].style.transform = `matrix3d(${editMatr([[12, 20], [13, -20]])})`
 }
 
-function deactivate(bubble) {
+function deactivate() {
+  let bubble = document.getElementById('invite-bubble');
+
   let ring1 = document.getElementById('ring-1'),
   ring2 = document.getElementById('ring-2')
   ring3 = document.getElementById('ring-3');

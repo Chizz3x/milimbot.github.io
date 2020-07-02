@@ -10,7 +10,9 @@
 
     <link rel="icon" href="https://i.imgur.com/iNlISMy.png">
     <title>Milim.bot</title>
+  </head>
 
+  <body style="background-color: #323232; margin: 0">
     <div id="menu">
       <div id="profile">
         <img id="avatar" src="https://i.imgur.com/iNlISMy.png">
@@ -24,14 +26,14 @@
         <button onclick="openInNewTab('https://discord.gg/zG83r6M')" class="main-buttons" id="btn-3">Support server</button>
       </div>
     </div>
-  </head>
 
-  <body style="background-color: #323232; margin: 0">
     <div id="invite-container">
-      <div id="invite-bubble" onmouseover="activate(this)" onmouseout="deactivate(this)" onclick="openInNewTab('https://discord.com/oauth2/authorize?client_id=470180228908449792&permissions=8&redirect_uri=https%3A%2F%2Fdiscord.gg%2FzG83r6M&scope=bot')">
+      <div id="invite-bubble">
         <div class="ring" id="ring-3"></div>
         <div class="ring" id="ring-2"></div>
         <div class="ring" id="ring-1"></div>
+        <div id="inv" onmouseover="activate()" onmouseout="deactivate()" onclick="openInNewTab('https://discord.com/oauth2/authorize?client_id=470180228908449792&permissions=8&redirect_uri=https%3A%2F%2Fdiscord.gg%2FzG83r6M&scope=bot')">
+        </div>
         <svg id="invite-svg" viewBox="0 0 5120 5120" style="width: 100px">
           <g id="door" fill="#252525" stroke="none">
             <path d="M2890 2480 l0 -2310 157 0 158 0 312 312 313 313 0 1842 0 1843 -310 155 -310 155 -160 0 -160 0 0 -2310z m596 378 c20 -19 28 -39 32 -77 l4 -50 82 -3 81 -3 0 -85 0 -85 -196 -3 c-114 -1 -208 2 -223 8 -14 5 -35 24 -46 42 -18 28 -21 46 -18 129 2 80 6 101 23 119 31 34 53 40 147 37 80 -2 90 -4 114 -29z"></path>
@@ -61,8 +63,35 @@
     <div id="image-5-box" class="image-box">
       <img id="image-5" class="image" src="https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/Capture4.PNG?raw=true"></img>
     </div>
-    <!--<img id="image-6" class="image" src="https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/Capture5.PNG?raw=true"></img>
-    <img id="image-7" class="image" src="https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/Capture6.PNG?raw=true"></img>
-    <img id="image-8" class="image" src="https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/Capture7.PNG?raw=true"></img>-->
+    <div id="image-6-box" class="image-box">
+      <img id="image-6" class="image" src="https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/Capture5.PNG?raw=true"></img>
+    </div>
+    <div id="image-7-box" class="image-box">
+      <img id="image-7" class="image" src="https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/Capture6.PNG?raw=true"></img>
+    </div>
+    <div id="image-8-box" class="image-box">
+      <img id="image-8" class="image" src="https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/Capture7.PNG?raw=true"></img>
+    </div>
+
+    <footer id="footer" class="footer-shrink">
+      <p id="love">
+        Made with&nbsp;
+        <svg style="margin-top: -4px;" fill="#F04747" width="1.5em" height="1.5em" viewBox="0 0 24 24">
+          <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"><title>love</title></path>
+        </svg>
+      </p>
+      <a onclick="openInNewTab('https://discord.com')">
+        <svg fill="white" style="width: 40px; transition: 0.5s" viewBox="0 0 2450 2400" id="discord">
+          <path d="M1973 2092 c-73 -65 -173 -155 -223 -201 -49 -46 -90 -79 -90 -75 0 5 9 41 20 79 11 38 20 73 20 77 0 5 -258 8 -573 8 -658 0 -648 1 -716 -76 -27 -31 -43 -61 -50 -95 -15 -71 -15 -1369 0 -1441 14 -66 82 -140 144 -157 27 -7 257 -11 731 -11 762 0 746 -1 811 62 67 64 64 17 61 1030 l-3 916 -132 -116z m-984 -621 l31 -39 -30 -10 c-41 -15 -117 -69 -130 -92 -8 -15 5 -12 72 20 205 94 432 94 628 -2 36 -18 70 -34 75 -36 6 -3 -6 12 -25 33 -19 21 -61 50 -92 65 l-57 27 31 37 c30 36 33 38 77 31 77 -12 148 -44 202 -93 l51 -46 -6 -86 c-13 -155 -62 -343 -122 -462 -21 -42 -33 -51 -107 -88 -59 -29 -99 -42 -142 -46 l-60 -5 65 28 c79 34 137 66 170 92 34 28 19 26 -39 -4 -197 -100 -517 -96 -719 9 -47 24 -39 5 11 -25 58 -37 104 -59 162 -80 47 -17 48 -18 17 -19 -42 0 -143 34 -201 68 -36 21 -50 38 -77 96 -45 98 -81 223 -99 341 -24 162 -22 176 29 223 52 48 88 67 158 86 81 22 93 20 127 -23z"><title>Discord</title></path>
+          <path d="M984 1236 c-29 -29 -34 -41 -34 -79 0 -85 78 -139 149 -103 69 36 80 136 21 189 -44 39 -92 37 -136 -7z"></path>
+          <path d="M1362 1254 c-26 -18 -52 -65 -52 -94 0 -37 31 -90 63 -106 73 -39 157 27 148 116 -9 81 -97 128 -159 84z"></path>
+        </svg>
+      </a>
+      <a onclick="openInNewTab('https://github.com')">
+        <svg fill="white" viewBox="0 0 16 16" style="width: 40px; transition: 0.5s" id="github">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"><title>Github</title></path>
+        </svg>
+      </a>
+    </footer>
   </body>
 </html>
