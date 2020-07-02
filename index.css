@@ -44,11 +44,7 @@
 
 #avatar {
 	width: 90px;
-	animation-name: avatarFloat;
-	animation-duration: 4s;
-	animation-direction: alternate;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease-in-out;
+	animation: avatarFloat 4s alternate infinite ease-in-out
 }
 
 #milim-name {
@@ -105,9 +101,9 @@ button:focus {
 	cursor: pointer
 }
 
-#invite-box {
+#invite-container {
 	width: 100%;
-	height: 500px;
+	height: 900px;
 	background-color: rgba(5,5,5,0.3);
 	margin-top: 250px;
 	position: absolute;
@@ -116,34 +112,151 @@ button:focus {
 	justify-content: center
 }
 
-#invite-container {
-	background-color: red;
-	margin-top: 80px;
+#invite-bubble {
+	background-color: rgba(130, 130, 180, 0.5);
 	display: flex;
+	margin-top: 80px;
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	transform: matrix3d(
-		1 /*y rot*/, 0, 0, 0 /*y smear*/,
-		0, 1, 0, 0 /*x smear*/,
-		0, 0, 1, 0,
-		0 /*x move*/, 0 /*y move*/, 0, 1
-	)
+	width: 170px;
+	height: 170px;
+	transition: background-color 0.3s, box-shadow 0.3s;
+	cursor: pointer
+}
+
+.ring {
+	position: absolute;
+	border-radius: 50%;
+	transition: 0.3s
+}
+
+@keyframes ringRotate {
+	from {
+		transform: rotateZ(0deg)
+	}
+	to {
+		transform: rotateZ(360deg)
+	}
 }
 
 #ring-1 {
 	width: 190px;
 	height: 190px;
-	position: absolute;
-	border-radius: 50%;
-	border: 3px solid red;
-	transform: translateZ(-10px)
+	border: 3px solid rgba(130, 130, 180, 0.5)
 }
 
 #ring-2 {
 	width: 220px;
 	height: 220px;
+	border: 2px dotted rgba(170, 170, 220, 0.4);
+	animation: ringRotate 40s infinite linear
+}
+
+#ring-3 {
+	width: 240px;
+	height: 240px;
+	border: 1px dashed rgba(230, 230, 255, 0.35);
+	animation: ringRotate 40s infinite linear
+}
+
+.image-box {
 	position: absolute;
-	border-radius: 50%;
-	border: 2px solid red;
-	transform: translateZ(-10px)
+	z-index: -1
+}
+
+.image {
+	width: 450px
+}
+
+@keyframes image1 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			5, 10, 0, 1
+		)
+	}
+}
+@keyframes image2 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0,
+			-0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			-5, 10, 0, 1
+		)
+	}
+}
+@keyframes image3 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0.001,
+			-0.05, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image4 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, -0.0001,
+			0.05, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+
+#image-1-box {
+	left: 0;
+	margin-top: 300px;
+	margin-left: 5%;
+	animation: image1 5s infinite alternate ease-in-out
+}
+#image-1 {
+	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 80% 0%);
+	transition: transform 1s;
+}
+#image-2-box {
+	right: 0;
+	margin-top: 320px;
+	margin-right: 5%;
+	animation: image2 5s infinite alternate ease-in-out
+}
+#image-2 {
+	clip-path: polygon(0% 0%, 50% 100%, 100% 100%, 100% 0%);
+	transition: transform 1s;
+}
+#image-3-box {
+	left: 0;
+	margin-top: 400px;
+	margin-left: 22%;
+	animation: image3 5s infinite alternate ease-in-out
+}
+#image-3 {
+	clip-path: polygon(60% 0%, 20% 100%, 100% 100%, 60% 0%);
+	transition: transform 1s;
+}
+#image-4-box {
+	left: 0;
+	margin-top: 480px;
+	margin-left: 5%;
+	animation: image4 5s infinite alternate ease-in-out
+}
+#image-4 {
+	clip-path: polygon(5% 0%, 0% 100%, 30% 100%, 80% 0%);
+	transition: transform 1s;
+}
+#image-5-box {
+	right: 0;
+	margin-top: 760px;
+	margin-right: 5%;
+	animation: image5 4s infinite alternate ease-in-out
+}
+#image-5 {
+	clip-path: polygon(20% 0%, 30% 100%, 95% 100%, 100% 0%);
+	transition: transform 1s;
+}
