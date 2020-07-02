@@ -1,4 +1,4 @@
 # Milim.bot.github.io
 A website for Discord bot Milim
 
-Link: [https://chizz3x.github.io/Milim.bot.github.io](https://chizz3x.github.io/Milim.bot.github.io){:target="_blank"}
+<p>https://chizz3x.github.io/Milim.bot.github.io<a href="https://chizz3x.github.io/Milim.bot.github.io" target="_blank">a link</a></p>
