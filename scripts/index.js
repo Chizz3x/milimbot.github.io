@@ -54,7 +54,7 @@ function linkBubbles() {
 window.onscroll = function() {
     menuStick();
     footer();
-    linkBubbles();
+    //linkBubbles();
 }
 
 window.addEventListener('mousemove', e => {
