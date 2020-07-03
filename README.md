@@ -2,4 +2,5 @@
 A website for Discord bot Milim
 
 https://chizz3x.github.io/Milim.bot.github.io
-milimbot.ml
+
+https://www.milimbot.ml
