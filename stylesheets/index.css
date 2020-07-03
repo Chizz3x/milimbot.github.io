@@ -1,7 +1,597 @@
+@font-face {
+	font-family: smooth;
+	font-weight: normal;
+	src: url('fonts/Normal.woff') format('WOFF');
+}
+@font-face {
+	font-family: smooth;
+	font-weight: bold;
+	src: url('fonts/Bold.woff') format('WOFF');
+}
+
 #menu {
-  width: 100%;
-  height: 200px;
-  z-index: 999;
-  position: fixed;
-  background-color: rgba(5,5,5,0.3)
+	left: 0;
+	right: 0;
+	height: 200px;
+	transition: height 0.5s;
+	z-index: 1;
+	background-color: rgba(5,5,5,0.3);
+	position: fixed;
+	top: 0;
+	overflow: hidden
+}
+
+.menu-shrink {
+	height: 125px !important;
+	transition: height 0.5s
+}
+
+#profile {
+	width: auto;
+	padding-top: 20px;
+	margin-left: 20px;
+	position: relative;
+}
+
+@keyframes avatarFloat {
+	from {
+		transform: translateY(1px)
+	}
+	to {
+		transform: translateY(-5px)
+	}
+}
+
+#avatar {
+	width: 90px;
+	animation: avatarFloat 4s alternate infinite ease-in-out
+}
+
+#milim-name {
+	font-family: smooth;
+	font-size: 40px;
+	color: #e36c5f;
+	text-shadow: 0px 0px 4px #ff8c80;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	position: absolute;
+	margin-top: 28px;
+	margin-left: 20px;
+}
+
+button,
+button:focus {
+	border: none;
+	outline: none
+}
+
+#main-buttons-box {
+	width: auto;
+	margin-top: 20px
+}
+
+#btn-1 {
+	background-color: #43b581
+}
+
+#btn-2 {
+	background-color: #7289da
+}
+
+#btn-3 {
+	background-color: rgba(150,150,150)
+}
+
+.main-buttons:hover {
+	background-color: #e36c5f !important;
+	color: white;
+	transition: all 0.35s;
+	transform: translateY(-1.5px);
+}
+
+.main-buttons {
+	transition: all 0.5s;
+	height: 40px;
+	width: 180px;
+	border-radius: 10px;
+	font-family: sans-serif;
+	font-size: 17px;
+	margin-left: 15px;
+	color: rgba(230,230,230);
+	cursor: pointer
+}
+
+#invite-container {
+	width: 100%;
+	height: 1200px;
+	background-color: rgba(5,5,5,0.3);
+	margin-top: 250px;
+	position: absolute;
+	display: flex;
+	overflow: hidden;
+	justify-content: center;
+}
+
+#invite-bubble {
+	background-color: rgba(130, 130, 180, 0.5);
+	display: flex;
+	margin-top: 80px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	width: 170px;
+	height: 170px;
+	transition: background-color 0.3s, box-shadow 0.3s;
+	transform: matrix3d(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	)
+}
+
+#inv {
+	width: 170px;
+	height: 170px;
+	position: fixed;
+	cursor: pointer;
+	border-radius: 50%
+}
+
+.ring {
+	position: fixed; /*Something wrong here cuz of that random hover appearance*/
+	border-radius: 50%;
+	transition: 0.3s;
+}
+
+@keyframes ringRotate {
+	from {
+		transform: rotateZ(0deg)
+	}
+	to {
+		transform: rotateZ(360deg)
+	}
+}
+
+#ring-1 {
+	width: 190px;
+	height: 190px;
+	border: 3px solid rgba(130, 130, 180, 0.5)
+}
+
+#ring-2 {
+	width: 220px;
+	height: 220px;
+	border: 2px dotted rgba(170, 170, 220, 0.4);
+	animation: ringRotate 40s infinite linear
+}
+
+#ring-3 {
+	width: 240px;
+	height: 240px;
+	border: 1px dashed rgba(230, 230, 255, 0.35);
+	animation: ringRotate 40s infinite linear
+}
+
+.image-box {
+	position: absolute;
+	z-index: -1
+}
+
+.image {
+	width: 450px
+}
+
+@keyframes image1 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			5, 10, 0, 1
+		)
+	}
+}
+@keyframes image2 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0,
+			-0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			-5, 10, 0, 1
+		)
+	}
+}
+@keyframes image3 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0.001,
+			-0.05, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image4 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, -0.0001,
+			0.05, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image5 {
+	to {
+		transform: matrix3d(
+			1, 0.01, 0, -0.0001,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image6 {
+	to {
+		transform: matrix3d(
+			1, -0.1, 0, 0.0002,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image7 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.0001,
+			-0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image8 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.000015,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image9 {
+	to {
+		transform: matrix3d(
+			1, -0.1, 0, -0.00001,
+			-0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image10 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.00001,
+			-0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image11 {
+	to {
+		transform: matrix3d(
+			1, -0.1, 0, -0.000015,
+			0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image12 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.00001,
+			0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+
+#image-1-box {
+	left: 0;
+	margin-top: 300px;
+	margin-left: 5%;
+	animation: image1 5s infinite alternate ease-in-out
+}
+#image-1 {
+	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 80% 0%);
+	transition: transform 2s;
+}
+#image-2-box {
+	right: 0;
+	margin-top: 320px;
+	margin-right: 5%;
+	animation: image2 4.5s infinite alternate ease-in-out
+}
+#image-2 {
+	clip-path: polygon(0% 0%, 50% 100%, 100% 100%, 100% 0%);
+	transition: transform 2s;
+}
+#image-3-box {
+	right: 0;
+	margin-top: 400px;
+	margin-right: 25%;
+	animation: image3 4s infinite alternate ease-in-out
+}
+#image-3 {
+	clip-path: polygon(70% 0%, 20% 100%, 97% 100%, 70% 0%);
+	transition: transform 1s;
+}
+#image-4-box {
+	left: 0;
+	margin-top: 480px;
+	margin-left: 10%;
+	animation: image4 5.5s infinite alternate ease-in-out
+}
+#image-4 {
+	clip-path: polygon(5% 5%, 0% 100%, 30% 100%, 100% 40%, 100% 40%);
+	transition: transform 2s;
+}
+#image-5-box {
+	left: 0;
+	margin-top: 350px;
+	margin-left: 20%;
+	animation: image5 4s infinite alternate ease-in-out
+}
+#image-5 {
+	clip-path: polygon(80% 100%, 50% 100%, 0% 90%, 30% 0%, 70% 0%);
+	transition: transform 1.5s;
+}
+#image-6-box {
+	left: 0;
+	margin-top: 680px;
+	margin-left: 23%;
+	animation: image6 6s infinite alternate ease-in-out
+}
+#image-6 {
+	clip-path: polygon(0% 50%, 0% 100%, 100% 100%, 60% 0%);
+	transition: transform 2s;
+}
+#image-7-box {
+	right: 0;
+	margin-top: 730px;
+	margin-right: 18%;
+	animation: image7 5s infinite alternate ease-in-out
+}
+#image-7 {
+	clip-path: polygon(0% 10%, 15% 100%, 100% 100%, 60% 0%);
+	transition: transform 2.5s;
+}
+#image-8-box {
+	left: 0;
+	margin-top: 850px;
+	margin-left: 3%;
+	animation: image8 6s infinite alternate ease-in-out
+}
+#image-8 {
+	clip-path: polygon(10% 0%, 0% 100%, 60% 100%, 50% 0%);
+	transition: transform 2s;
+}
+#image-9-box {
+	overflow: hidden;
+	left: 0;
+	margin-bottom: -1050px;
+	bottom: 0;
+	margin-left: 0%;
+	animation: image9 6s infinite alternate ease-in-out;
+}
+#image-9 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 95% 0%);
+	transition: transform 3s;
+}
+#image-10-box {
+	overflow: hidden;
+	left: 0;
+	margin-bottom: -1100px;
+	bottom: 0;
+	margin-left: 20%;
+	animation: image10 6s infinite alternate ease-in-out;
+}
+#image-10 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(30% 0%, 0% 100%, 100% 100%, 90% 5%);
+	transition: transform 3s;
+}
+#image-11-box {
+	overflow: hidden;
+	left: 0;
+	margin-bottom: -950px;
+	bottom: 0;
+	margin-left: 46%;
+	animation: image11 6s infinite alternate ease-in-out;
+}
+#image-11 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(5% 10%, 10% 100%, 100% 100%, 95% 0%);
+	transition: transform 2s;
+}
+#image-12-box {
+	overflow: hidden;
+	right: 0;
+	margin-bottom: -980px;
+	bottom: 0;
+	margin-right: 0%;
+	animation: image12 6s infinite alternate ease-in-out;
+}
+#image-12 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(0% 10%, 15% 100%, 100% 100%, 100% 0%);
+	transition: transform 3s;
+}
+
+#footer {
+	left: 0;
+	right: 0;
+	height: 80px;
+	bottom: 0;
+	position: fixed;
+	background-color: rgba(5,5,5,0.2);
+	overflow: hidden;
+	transition: height 0.3s;
+}
+
+.footer-shrink {
+	height: 0 !important;
+}
+
+#love {
+	font-family: Arial;
+	color: rgb(200,200,200);
+	height: 10px;
+	justify-content: center;
+	display: flex;
+	margin-bottom: 0;
+}
+
+#possible-of {
+	color: rgb(200,200,200);
+	font-family: Arial;
+	font-size: 15px;
+	text-align: right;
+	align-items: center;
+}
+
+.badge {
+	margin-left: auto;
+	margin-right: 5px;
+	display: block;
+	float: right;
+	cursor: pointer;
+}
+.badge:hover {
+	fill: rgb(220,220,220)
+}
+
+#widget {
+	right: 0;
+	position: fixed;
+	margin-top: 225px;
+	transition: transform 0.5s
+}
+
+#widget-arrow-box {
+	height: 50px;
+	width: 25px;
+	position: fixed;
+	background-color: rgb(32, 34, 37);
+	margin-top: 175px;
+	margin-left: -25px;
+	border-radius: 50% 0% 0% 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#widget-arrow {
+	height: 40px;
+	align: center;
+	transition: fill 0.5s, transform 0.5s;
+	cursor: pointer;
+}
+#widget-arrow:hover {
+	fill: rgba(255,255,255,0.7)
+}
+.widget-close {
+	transform: translateX(350px);
+}
+
+/*.link-bubble {
+	width: 40px;
+	height: 40px;
+	background-color: rgba(110,110,180,0.3);
+	border: 2px solid rgba(10,10,50,0.1);
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+#link-bubble-1,
+#link-bubble-2 {
+	border-radius: 5% 50% 80%;
+	transform: rotateZ(-45deg) translate(-40px, -40px);
+}
+#link-bubble-3,
+#link-bubble-4 {
+	border-radius: 50% 5% 50% 60%;
+	transform: rotateZ(45deg) translate(40px, -40px);
+}
+#link-bubble-1:hover,
+#link-bubble-2:hover,
+#link-bubble-3:hover,
+#link-bubble-4:hover {
+	background-color: rgba(140,140,210,0.4)
+}
+#link-bubble-1,
+#link-bubble-3 {
+	transition: transform 0.5s, border-radius 1s, background-color 0.5s;
+}
+#link-bubble-2,
+#link-bubble-4 {
+	transition: transform 1s, border-radius 2s, background-color 0.5s;
+}
+
+.link-bubble-1-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(-45deg) translate(20px, 20px) !important;
+}
+.link-bubble-2-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(-45deg) translate(300px, 300px) !important;
+}
+.link-bubble-3-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(45deg) translate(-20px, 20px) !important;
+}
+.link-bubble-4-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(45deg) translate(-300px, 300px) !important;
+}
+
+#link-icon {
+	width: 30px;
+	transform: rotateZ(45deg);
+	opacity: 0.3
+}*/
+
+#overlay {
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	font-family: Arial;
+	font-size: 30px;
+	color: rgba(255,255,255,0.7);
+	background-color: rgb(30,30,30);
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 1s;
+}
+
+.disable-scroll {
+	overflow-y: hidden
 }
