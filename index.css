@@ -14,7 +14,7 @@
 	right: 0;
 	height: 200px;
 	transition: height 0.5s;
-	z-index: 999;
+	z-index: 1;
 	background-color: rgba(5,5,5,0.3);
 	position: fixed;
 	top: 0;
@@ -103,13 +103,13 @@ button:focus {
 
 #invite-container {
 	width: 100%;
-	height: 1000px;
+	height: 1200px;
 	background-color: rgba(5,5,5,0.3);
 	margin-top: 250px;
 	position: absolute;
 	display: flex;
 	overflow: hidden;
-	justify-content: center
+	justify-content: center;
 }
 
 #invite-bubble {
@@ -122,6 +122,12 @@ button:focus {
 	width: 170px;
 	height: 170px;
 	transition: background-color 0.3s, box-shadow 0.3s;
+	transform: matrix3d(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	)
 }
 
 #inv {
@@ -219,7 +225,7 @@ button:focus {
 @keyframes image5 {
 	to {
 		transform: matrix3d(
-			1, 0.1, 0, -0.0001,
+			1, 0.01, 0, -0.0001,
 			0.1, 1, 0, 0,
 			0, 0, 1, 0,
 			0, 10, 0, 1
@@ -239,8 +245,58 @@ button:focus {
 @keyframes image7 {
 	to {
 		transform: matrix3d(
-			1, 0.1, 0, -0.0001,
+			1, 0.1, 0, 0.0001,
 			-0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image8 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.000015,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image9 {
+	to {
+		transform: matrix3d(
+			1, -0.1, 0, -0.00001,
+			-0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image10 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.00001,
+			-0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image11 {
+	to {
+		transform: matrix3d(
+			1, -0.1, 0, -0.000015,
+			0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image12 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.00001,
+			0.01, 1, 0, 0,
 			0, 0, 1, 0,
 			0, 10, 0, 1
 		)
@@ -315,18 +371,73 @@ button:focus {
 }
 #image-7 {
 	clip-path: polygon(0% 10%, 15% 100%, 100% 100%, 60% 0%);
-	transition: transform 2s;
+	transition: transform 2.5s;
 }
 #image-8-box {
 	left: 0;
-	width: 800px !important;
 	margin-top: 850px;
-	margin-left: 5%;
-	animation: image8 5s infinite alternate ease-in-out
+	margin-left: 3%;
+	animation: image8 6s infinite alternate ease-in-out
 }
 #image-8 {
-	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%);
+	clip-path: polygon(10% 0%, 0% 100%, 60% 100%, 50% 0%);
 	transition: transform 2s;
+}
+#image-9-box {
+	overflow: hidden;
+	left: 0;
+	margin-bottom: -1050px;
+	bottom: 0;
+	margin-left: 0%;
+	animation: image9 6s infinite alternate ease-in-out;
+}
+#image-9 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 95% 0%);
+	transition: transform 3s;
+}
+#image-10-box {
+	overflow: hidden;
+	left: 0;
+	margin-bottom: -1100px;
+	bottom: 0;
+	margin-left: 20%;
+	animation: image10 6s infinite alternate ease-in-out;
+}
+#image-10 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(30% 0%, 0% 100%, 100% 100%, 90% 5%);
+	transition: transform 3s;
+}
+#image-11-box {
+	overflow: hidden;
+	left: 0;
+	margin-bottom: -950px;
+	bottom: 0;
+	margin-left: 46%;
+	animation: image11 6s infinite alternate ease-in-out;
+}
+#image-11 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(5% 10%, 10% 100%, 100% 100%, 95% 0%);
+	transition: transform 2s;
+}
+#image-12-box {
+	overflow: hidden;
+	right: 0;
+	margin-bottom: -980px;
+	bottom: 0;
+	margin-right: 0%;
+	animation: image12 6s infinite alternate ease-in-out;
+}
+#image-12 {
+	width: 400px;
+	height: auto;
+	clip-path: polygon(0% 10%, 15% 100%, 100% 100%, 100% 0%);
+	transition: transform 3s;
 }
 
 #footer {
@@ -347,24 +458,140 @@ button:focus {
 #love {
 	font-family: Arial;
 	color: rgb(200,200,200);
-	height: 0.1px;
+	height: 10px;
 	justify-content: center;
 	display: flex;
+	margin-bottom: 0;
 }
 
-#discord {
-	position: fixed;
-	margin-right: 20px;
-	right: 0;
+#possible-of {
+	color: rgb(200,200,200);
+	font-family: Arial;
+	font-size: 15px;
+	text-align: right;
+	align-items: center;
+}
+
+.badge {
+	margin-left: auto;
+	margin-right: 5px;
+	display: block;
+	float: right;
 	cursor: pointer;
 }
-#github {
-	position: fixed;
-	margin-right: 70px;
-	right: 0;
-	cursor: pointer;
-}
-#discord:hover,
-#github:hover {
+.badge:hover {
 	fill: rgb(220,220,220)
+}
+
+#widget {
+	right: 0;
+	position: fixed;
+	margin-top: 225px;
+	transition: transform 0.5s
+}
+
+#widget-arrow-box {
+	height: 50px;
+	width: 25px;
+	position: fixed;
+	background-color: rgb(32, 34, 37);
+	margin-top: 175px;
+	margin-left: -25px;
+	border-radius: 50% 0% 0% 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#widget-arrow {
+	height: 40px;
+	align: center;
+	transition: fill 0.5s, transform 0.5s;
+	cursor: pointer;
+}
+#widget-arrow:hover {
+	fill: rgba(255,255,255,0.7)
+}
+.widget-close {
+	transform: translateX(350px);
+}
+
+/*.link-bubble {
+	width: 40px;
+	height: 40px;
+	background-color: rgba(110,110,180,0.3);
+	border: 2px solid rgba(10,10,50,0.1);
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+#link-bubble-1,
+#link-bubble-2 {
+	border-radius: 5% 50% 80%;
+	transform: rotateZ(-45deg) translate(-40px, -40px);
+}
+#link-bubble-3,
+#link-bubble-4 {
+	border-radius: 50% 5% 50% 60%;
+	transform: rotateZ(45deg) translate(40px, -40px);
+}
+#link-bubble-1:hover,
+#link-bubble-2:hover,
+#link-bubble-3:hover,
+#link-bubble-4:hover {
+	background-color: rgba(140,140,210,0.4)
+}
+#link-bubble-1,
+#link-bubble-3 {
+	transition: transform 0.5s, border-radius 1s, background-color 0.5s;
+}
+#link-bubble-2,
+#link-bubble-4 {
+	transition: transform 1s, border-radius 2s, background-color 0.5s;
+}
+
+.link-bubble-1-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(-45deg) translate(20px, 20px) !important;
+}
+.link-bubble-2-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(-45deg) translate(300px, 300px) !important;
+}
+.link-bubble-3-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(45deg) translate(-20px, 20px) !important;
+}
+.link-bubble-4-out {
+	border-radius: 50% 50% 50% !important;
+	transform: rotateZ(45deg) translate(-300px, 300px) !important;
+}
+
+#link-icon {
+	width: 30px;
+	transform: rotateZ(45deg);
+	opacity: 0.3
+}*/
+
+#overlay {
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	font-family: Arial;
+	font-size: 30px;
+	color: rgba(255,255,255,0.7);
+	background-color: rgb(30,30,30);
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 1s;
+}
+
+.disable-scroll {
+	overflow-y: hidden
 }

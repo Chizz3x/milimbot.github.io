@@ -15,20 +15,46 @@ function menuStick() {
 }
 
 function footer() {
+  let foot = document.getElementById('footer');
   if(document.body.scrollTop + window.innerHeight >= (document.body.scrollHeight - 50)) {
-    let foot = document.getElementById('footer');
     if(foot.classList.contains('footer-shrink'))
       foot.classList.remove('footer-shrink')
   } else {
-    let foot = document.getElementById('footer');
     if(!foot.classList.contains('footer-shrink'))
       foot.classList.add('footer-shrink')
   }
 }
 
+function linkBubbles() {
+  let b1 = document.getElementById('link-bubble-1');
+  let b2 = document.getElementById('link-bubble-2');
+  let b3 = document.getElementById('link-bubble-3');
+  let b4 = document.getElementById('link-bubble-4');
+  if(document.body.scrollTop + window.innerHeight >= (document.body.scrollHeight - 20)) {
+    if(!b1.classList.contains('link-bubble-1-out'))
+      b1.classList.add('link-bubble-1-out');
+    if(!b2.classList.contains('link-bubble-2-out'))
+      b2.classList.add('link-bubble-2-out');
+    if(!b3.classList.contains('link-bubble-3-out'))
+      b3.classList.add('link-bubble-3-out');
+    if(!b4.classList.contains('link-bubble-4-out'))
+      b4.classList.add('link-bubble-4-out');
+  } else {
+    if(b1.classList.contains('link-bubble-1-out'))
+      b1.classList.remove('link-bubble-1-out');
+    if(b2.classList.contains('link-bubble-2-out'))
+      b2.classList.remove('link-bubble-2-out');
+    if(b3.classList.contains('link-bubble-3-out'))
+      b3.classList.remove('link-bubble-3-out');
+    if(b4.classList.contains('link-bubble-4-out'))
+      b4.classList.remove('link-bubble-4-out');
+  }
+}
+
 window.onscroll = function() {
     menuStick();
-    footer()
+    footer();
+    linkBubbles();
 }
 
 window.addEventListener('mousemove', e => {
@@ -36,6 +62,7 @@ window.addEventListener('mousemove', e => {
   let invoff = invite.getBoundingClientRect();
   let x = e.clientX - invoff.left - invoff.width / 2,
   y = e.clientY - invoff.top - invoff.height / 2;
+  if(y > 416) y = 416;
   invite.style.transform = `matrix3d(
 		1, 0, 0, ${x / 500000},
 		0, 1, 0, ${y / 500000},
@@ -88,17 +115,25 @@ function activate() {
     document.getElementById('image-5'),
     document.getElementById('image-6'),
     document.getElementById('image-7'),
-    document.getElementById('image-8')
+    document.getElementById('image-8'),
+    document.getElementById('image-9'),
+    document.getElementById('image-10'),
+    document.getElementById('image-11'),
+    document.getElementById('image-12')
   ];
 
   images[0].style.transform = `matrix3d(${editMatr([[12, 100], [13, 8]])})`;
   images[1].style.transform = `matrix3d(${editMatr([[12, -40], [13, -5]])})`;
-  images[2].style.transform = `matrix3d(${editMatr([[12, -40], [13, -20]])})`;
-  images[3].style.transform = `matrix3d(${editMatr([[12, 90], [13, -10]])})`;
-  images[4].style.transform = `matrix3d(${editMatr([[12, 110], [13, 2]])})`;
+  images[2].style.transform = `matrix3d(${editMatr([[12, -40], [13, -20], [15, 0.95]])})`;
+  images[3].style.transform = `matrix3d(${editMatr([[12, 90], [13, -10], [3, -0.0002], [1, -0.09], [4, 0.09]])})`;
+  images[4].style.transform = `matrix3d(${editMatr([[12, 110], [13, 2], [15, 0.9]])})`;
   images[5].style.transform = `matrix3d(${editMatr([[12, 30], [13, -30]])})`;
   images[6].style.transform = `matrix3d(${editMatr([[12, -20], [13, -50]])})`;
-  images[7].style.transform = `matrix3d(${editMatr([[12, 20], [13, -20]])})`
+  images[7].style.transform = `matrix3d(${editMatr([[12, 30], [13, -20], [1, 0.09], [4, -0.09]])})`;
+  images[8].style.transform = `matrix3d(${editMatr([[12, 20], [13, -20]])})`;
+  images[9].style.transform = `matrix3d(${editMatr([[12, 10], [13, -20]])})`;
+  images[10].style.transform = `matrix3d(${editMatr([[12, -5], [13, -20]])})`;
+  images[11].style.transform = `matrix3d(${editMatr([[12, -10], [13, -20]])})`
 }
 
 function deactivate() {
@@ -131,8 +166,24 @@ function deactivate() {
     document.getElementById('image-5'),
     document.getElementById('image-6'),
     document.getElementById('image-7'),
-    document.getElementById('image-8')
+    document.getElementById('image-8'),
+    document.getElementById('image-9'),
+    document.getElementById('image-10'),
+    document.getElementById('image-11'),
+    document.getElementById('image-12')
   ];
 
   images.forEach(i => {i.style.transform = `none`})
+}
+
+function widgetSlide() {
+  let widget = document.getElementById('widget')
+  arrow = document.getElementById('widget-arrow');
+  if(widget.classList.contains('widget-close')) {
+    widget.classList.remove('widget-close');
+    arrow.style.transform = 'scaleX(-1) translate(-3px)'
+  } else {
+    widget.classList.add('widget-close');
+    arrow.style.transform = 'none'
+  }
 }
