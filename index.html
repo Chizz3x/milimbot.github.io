@@ -1,5 +1,15 @@
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124397427-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-124397427-3');
+    </script>
+
     <link rel="stylesheet" href="stylesheets/index.css">
     <script src="scripts/index.js"></script>
 
@@ -10,38 +20,31 @@
 
     <link rel="icon" href="https://i.imgur.com/iNlISMy.png">
     <title>Milim.bot</title>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171613494-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-171613494-1');
-    </script>
   </head>
 
   <body style="background-color: #323232; margin: 0; overflow-x: hidden">
     <div id="overlay">
       <p id="overlay-text"></p>
     </div>
-
-    <div id="menu">
+    <div id="menu"> <!-- Add owner Tag on right side -->
       <div id="profile">
         <img id="avatar" src="https://i.imgur.com/iNlISMy.png">
         <text id="milim-name">
           Milim<b>.bot</b>
         </text>
       </div>
-      <div id="main-buttons-box">
-        <button onclick="openInNewTab('https://discord.com/oauth2/authorize?client_id=470180228908449792&permissions=8&redirect_uri=https%3A%2F%2Fdiscord.gg%2FzG83r6M&scope=bot')" class="main-buttons" id="btn-1">Invite Milim</button>
-        <button onclick="openInNewTab('https://gitlab.com/HCat/milim.info/-/tree/master/command%20modules')" class="main-buttons" id="btn-2">Commands</button>
-        <button onclick="openInNewTab('https://discord.gg/zG83r6M')" class="main-buttons" id="btn-3">Support server</button>
-      </div>
+      <p id="desc">Milim is a multipurpose bot made to help Discord server owners manage their servers easier and alongside to have fun.</p>
     </div>
 
     <div id="invite-container">
+      <div id="main-buttons-box">
+        <div onclick="openInNewTab('https://gitlab.com/HCat/milim.info/-/tree/master/command%20modules')" class="button-overlay btn-2-main" onmouseover="buttonHover(2)" onmouseout="buttonUnhover(2)"></div>
+        <button class="main-button btn-2-main" id="btn-2">Commands</button>
+        <div onclick="openInNewTab('https://www.patreon.com/Milim')" class="button-overlay btn-1-main" onmouseover="buttonHover(1)" onmouseout="buttonUnhover(1)"></div>
+        <button class="main-button btn-1-main" id="btn-1">Make Milim happy</button>
+        <div onclick="openInNewTab('https://discord.gg/zG83r6M')" class="button-overlay btn-3-main" onmouseover="buttonHover(3)" onmouseout="buttonUnhover(3)"></div>
+        <button class="main-button btn-3-main" id="btn-3">Support server</button>
+      </div>
       <div id="invite-bubble">
         <div class="ring" id="ring-3"></div>
         <div class="ring" id="ring-2"></div>

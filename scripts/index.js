@@ -5,8 +5,7 @@ function openInNewTab(url) {
 
 function menuStick() {
   let posFromTop = document.body.scrollTop;
-  let menu = document.getElementById('menu'),
-  btns = document.getElementById('main-buttons-box');
+  let menu = document.getElementById('menu');
   if(posFromTop === 0 && menu.classList.contains('menu-shrink')) {
     menu.classList.remove('menu-shrink')
   } else if(posFromTop !== 0 && !menu.classList.contains('menu-shrink')) {
@@ -134,6 +133,10 @@ function activate() {
   images[9].style.transform = `matrix3d(${editMatr([[12, 10], [13, -20]])})`;
   images[10].style.transform = `matrix3d(${editMatr([[12, -5], [13, -20]])})`;
   images[11].style.transform = `matrix3d(${editMatr([[12, -10], [13, -20]])})`
+
+  document.getElementById('btn-1').style.transform = `matrix3d(${editMatr([[13, -30]])})`;
+  document.getElementById('btn-2').style.transform = `matrix3d(${editMatr([[12, 20], [13, -30], [1, 0.09], [4, -0.09]])})`;
+  document.getElementById('btn-3').style.transform = `matrix3d(${editMatr([[12, -20], [13, -30], [1, -0.09], [4, 0.09]])})`
 }
 
 function deactivate() {
@@ -170,7 +173,10 @@ function deactivate() {
     document.getElementById('image-9'),
     document.getElementById('image-10'),
     document.getElementById('image-11'),
-    document.getElementById('image-12')
+    document.getElementById('image-12'),
+    document.getElementById('btn-1'),
+    document.getElementById('btn-2'),
+    document.getElementById('btn-3')
   ];
 
   images.forEach(i => {i.style.transform = `none`})
@@ -186,4 +192,14 @@ function widgetSlide() {
     widget.classList.add('widget-close');
     arrow.style.transform = 'none'
   }
+}
+
+function buttonHover(ind) {
+  let btn = document.getElementById(`btn-${ind}`);
+  btn.classList.add('main-button-hover')
+}
+
+function buttonUnhover(ind) {
+  let btn = document.getElementById(`btn-${ind}`);
+  btn.classList.remove('main-button-hover')
 }

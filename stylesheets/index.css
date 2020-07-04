@@ -12,13 +12,21 @@
 #menu {
 	left: 0;
 	right: 0;
-	height: 200px;
+	height: 190px;
+	border-bottom: solid 10px rgba(20,20,20,0.3);
 	transition: height 0.5s;
 	z-index: 1;
 	background-color: rgba(5,5,5,0.3);
 	position: fixed;
 	top: 0;
 	overflow: hidden
+}
+
+#desc {
+	font-family: sans-serif;
+	color: rgb(240,240,240);
+	padding-left: 132px;
+	width: 450px
 }
 
 .menu-shrink {
@@ -66,39 +74,62 @@ button:focus {
 }
 
 #main-buttons-box {
-	width: auto;
-	margin-top: 20px
+	width: 100%;
+	height: 500px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
 }
 
+.button-overlay {
+	width: 180px;
+	height: 40px;
+	border-radius: 10px;
+	position: absolute;
+	cursor: pointer;
+}
+
+.btn-1-main {
+	bottom: 50px;
+}
 #btn-1 {
-	background-color: #43b581
+	background-color: #e6456f;
+	z-index: -1
 }
 
+.btn-2-main {
+	bottom: 120px;
+	left: 100px
+}
 #btn-2 {
-	background-color: #7289da
+	background-color: #7289da;
+	z-index: -1
 }
 
+.btn-3-main {
+	bottom: 120px;
+	right: 100px
+}
 #btn-3 {
-	background-color: rgba(150,150,150)
+	background-color: #969696;
+	z-index: -1
 }
 
-.main-buttons:hover {
+.main-button-hover {
 	background-color: #e36c5f !important;
 	color: white;
-	transition: all 0.35s;
-	transform: translateY(-1.5px);
+	transform: translateY(-1.5px) !important;
 }
 
-.main-buttons {
-	transition: all 0.5s;
+.main-button {
+	transition: 0.5s !important;
 	height: 40px;
 	width: 180px;
 	border-radius: 10px;
 	font-family: sans-serif;
 	font-size: 17px;
-	margin-left: 15px;
 	color: rgba(230,230,230);
-	cursor: pointer
+	position: absolute;
 }
 
 #invite-container {
@@ -175,7 +206,7 @@ button:focus {
 
 .image-box {
 	position: absolute;
-	z-index: -1
+	z-index: -2
 }
 
 .image {
@@ -456,7 +487,7 @@ button:focus {
 }
 
 #love {
-	font-family: Arial;
+	font-family: sans-serif;
 	color: rgb(200,200,200);
 	height: 10px;
 	justify-content: center;
@@ -466,7 +497,7 @@ button:focus {
 
 #possible-of {
 	color: rgb(200,200,200);
-	font-family: Arial;
+	font-family: sans-serif;
 	font-size: 15px;
 	text-align: right;
 	align-items: center;
@@ -581,7 +612,7 @@ button:focus {
 	width: 100%;
 	height: 100%;
 	z-index: 10;
-	font-family: Arial;
+	font-family: sans-serif;
 	font-size: 30px;
 	color: rgba(255,255,255,0.7);
 	background-color: rgb(30,30,30);
