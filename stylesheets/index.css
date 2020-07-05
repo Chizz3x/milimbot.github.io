@@ -34,8 +34,8 @@
 	transition: height 0.5s
 }
 
-#profile {
-	width: auto;
+#milim-profile {
+	width: 350px;
 	padding-top: 20px;
 	margin-left: 20px;
 	position: relative;
@@ -625,4 +625,59 @@ button:focus {
 
 .disable-scroll {
 	overflow-y: hidden
+}
+
+#profile-box {
+	width: 250px;
+	height: 90px;
+	position: absolute;
+	right: 0;
+	top: 20px;
+	border-right: solid 5px rgba(10,10,10,0.7);
+	background-image: linear-gradient(to left, rgba(20,20,20,0.5), transparent);
+}
+
+#profile-tag {
+	width: 250px;
+	height: 60px;
+	background-image: linear-gradient(to left, rgba(15,15,15,0.4), transparent);
+	position: inherit;
+	right: 0;
+	overflow: hidden;
+}
+
+#profile-image {
+	width: 70px;
+	height: 70px;
+	right: 0;
+	position: absolute;
+	border-radius: 50%;
+	margin-top: 5px;
+	margin-right: 5px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+#profile-username {
+	font-family: Helvetica;
+	color: rgba(200,200,200,0.7);
+	user-select: none;
+	font-size: 20px;
+	font-weight: 500;
+	position: inherit;
+	right: 80px;
+}
+#profile-discr {
+	font-family: Helvetica;
+	font-weight: 800;
+	font-size: 50px;
+	position: absolute;
+	bottom: 0;
+	left: 5px;
+	margin-bottom: 5px;
+	color: rgba(200,200,200,0.1);
+	user-select: none;
+	background: linear-gradient(to right, rgba(200,200,200,0.01), rgba(200,200,200,0.1));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }

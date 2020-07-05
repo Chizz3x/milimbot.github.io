@@ -204,9 +204,16 @@ function buttonUnhover(ind) {
   btn.classList.remove('main-button-hover')
 }
 
-window.onload = () => {
-  let frag = new URLSearchParams(window.location.hash.slice(1));
-  console.log(frag.has('access_token') ? frag.get('access_token') : "No fragments")
+function prIn(img) {
+  if(!img.classList.contains('logged-in')) {
+    img.style.filter = "brightness(70%)"
+  }
+}
+
+function prOut(img) {
+  if(!img.classList.contains('logged-in')) {
+    img.style.filter = "none"
+  }
 }
 
 //new URLSearchParams(window.location.hash.slice(1)).get('access_token')

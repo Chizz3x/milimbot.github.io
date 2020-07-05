@@ -4,22 +4,22 @@ doc.classList.add('disable-scroll');
 let overlayText = document.getElementById('overlay-text');
 
 let texts = [
-  ["H","e","l","l","o","."],
-  ["H","o","w","d","y"],
-  ["A","y","y"," ","A","y","y"],
-  ["K","o","n","n","i","c","h","i","w","a","!"],
-  ["L","a","b","u","k","a"," ",";","P"],
-  ["H","e","y","!"],
-  ["H","i","y","a","!"],
-  ["A","h","o","y","!"],
-  ["C","o","o","k","i","e","s"],
-  ["E","l","l","o"],
-  ["W","h","a","d","d","u","p"],
-  ["O","h","?"],
-  ["H","o","l","a","."],
-  ["H","a","l","o","."],
-  ["B","o","n","j","o","u","r","."],
-  ["C","i","a","o","."]
+  "Hello.",
+  "Howdy",
+  "Ayy Ayy",
+  "Konnichiwa!",
+  "Labuka ;P",
+  "Hey!",
+  "Hiya!",
+  "Ahoy!",
+  "Cookies",
+  "Ello",
+  "Whaddup",
+  "Oh?",
+  "Hola.",
+  "Halo.",
+  "Bonjour.",
+  "Ciao."
 ];
 
 function disableInterval() {
