@@ -203,3 +203,13 @@ function buttonUnhover(ind) {
   let btn = document.getElementById(`btn-${ind}`);
   btn.classList.remove('main-button-hover')
 }
+
+let frag = new URLSearchParams(window.location.hash.slice(1));
+console.log(frag.has('access_token') ? frag.get('access_token') : "No fragments")
+
+//new URLSearchParams(window.location.hash.slice(1)).get('access_token')
+/*let params = new URLSearchParams(window.location.search);
+params = new URLSearchParams('?code=akhsbjsdvjfsd');
+if(params.has('code')) {
+  console.log('has code')
+}*/
