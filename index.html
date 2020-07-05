@@ -12,13 +12,12 @@
     <script src="scripts/index.js"></script>
     <script src="https://js.arcgis.com/3.32/"></script> <!-- Phone shake lib -->
     <script>
-      let supportsOrientationChange = "onorientationchange" in window,
-        orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
-
-      window.addEventListener(orientationEvent, function() {
-        if(!document.getElementById('desc').innerHTML.endsWith('shaken'))
-          document.getElementById('desc').innerHTML += ' Phone was shaken';
-      }, false)
+      //if(/Mobi|Android/i.test(navigator.userAgent)) {
+        if("onorientationchange" in window) window.addEventListener("orientationchange", function() {
+          if(!document.getElementById('desc').innerHTML.endsWith('shaken'))
+            document.getElementById('desc').innerHTML += ' Phone was shaken';
+        }, false)
+      //}
     </script>
 
     <link rel="stylesheet" href="stylesheets/index.css">
