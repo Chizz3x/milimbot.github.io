@@ -10,15 +10,6 @@
       gtag('config', 'UA-124397427-3');
     </script>
     <script src="scripts/index.js"></script>
-    <script src="https://js.arcgis.com/3.32/"></script> <!-- Phone shake lib -->
-    <script>
-      //if(/Mobi|Android/i.test(navigator.userAgent)) {
-        if("onorientationchange" in window) window.addEventListener("orientationchange", function() {
-          if(!document.getElementById('desc').innerHTML.endsWith('shaken'))
-            document.getElementById('desc').innerHTML += ' Phone was shaken';
-        }, false)
-      //}
-    </script>
 
     <link rel="stylesheet" href="stylesheets/index.css">
 
@@ -160,5 +151,20 @@
 
     <script src="scripts/overlay.js"></script>
     <script src="scripts/doauth2.js"></script>
+    <script src="node_modules/shake.js/shake.js"></script>
+    <script>
+      let shakeEvenet = new Shake({
+        threshold: 15,
+        timeout: 1000
+      });
+      shakeEvenet.start();
+
+      window.addEventListener('shake', shaken(), false);
+
+      function shaken() {
+        if(!document.getElementById('desc').innerHTML.endsWith('shaken'))
+          document.getElementById('desc').innerHTML += ' Phone was shaken';
+      }
+    </script>
   </body>
 </html>
