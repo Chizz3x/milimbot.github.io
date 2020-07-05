@@ -7,10 +7,10 @@ const defImages = [
 ];
 
 let frag = new URLSearchParams(window.location.hash.slice(1));
-window.history.pushState("object or string", "Title", "/");
 let img = document.getElementById('profile-image');
 
 if(frag.has('access_token') && frag.has('token_type')) {
+  window.history.pushState("object or string", "Title", "/");
   let username = document.getElementById('profile-username'),
   discr = document.getElementById('profile-discr'),
   box = document.getElementById('profile-box');
