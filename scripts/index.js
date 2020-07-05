@@ -91,14 +91,14 @@ function activate() {
   ring2 = document.getElementById('ring-2')
   ring3 = document.getElementById('ring-3');
 
-  bubble.style['background-color'] = "rgba(150, 150, 220, 0.6)";
-  bubble.style['box-shadow'] = '0 0 5px 5px rgba(150, 150, 220, 0.3)';
+  bubble.style['background-color'] = "rgba(242, 142, 131, 0.6)";
+  bubble.style['box-shadow'] = '0 0 5px 5px rgba(242, 142, 131, 0.3)';
 
-  ring1.style['border-color'] = 'rgba(160, 160, 200, 0.6)';
+  ring1.style['border-color'] = 'rgba(240, 101, 86, 0.6)';
   ring1.style.width = '210px';
   ring1.style.height = '210px';
 
-  ring2.style['border-color'] = 'rgba(200, 200, 240, 0.5)';
+  ring2.style['border-color'] = 'rgba(240, 125, 113, 0.5)';
   ring2.style.width = '230px';
   ring2.style.height = '230px';
 
@@ -217,10 +217,3 @@ function prOut(img) {
     document.getElementById('profile-image-box').style.color = 'transparent'
   }
 }
-
-//new URLSearchParams(window.location.hash.slice(1)).get('access_token')
-/*let params = new URLSearchParams(window.location.search);
-params = new URLSearchParams('?code=akhsbjsdvjfsd');
-if(params.has('code')) {
-  console.log('has code')
-}*/

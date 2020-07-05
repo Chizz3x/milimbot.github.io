@@ -7,6 +7,7 @@ const defImages = [
 ];
 
 let frag = new URLSearchParams(window.location.hash.slice(1));
+window.history.pushState("object or string", "Title", "/");
 let img = document.getElementById('profile-image');
 
 if(frag.has('access_token') && frag.has('token_type')) {

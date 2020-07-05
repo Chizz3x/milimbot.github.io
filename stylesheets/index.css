@@ -498,7 +498,7 @@ button:focus {
 #possible-of {
 	color: rgb(200,200,200);
 	font-family: sans-serif;
-	font-size: 15px;
+	font-size: 16px;
 	text-align: right;
 	align-items: center;
 }
@@ -544,69 +544,8 @@ button:focus {
 	fill: rgba(255,255,255,0.7)
 }
 .widget-close {
-	transform: translateX(350px);
+	transform: translateX(300px);
 }
-
-/*.link-bubble {
-	width: 40px;
-	height: 40px;
-	background-color: rgba(110,110,180,0.3);
-	border: 2px solid rgba(10,10,50,0.1);
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-}
-#link-bubble-1,
-#link-bubble-2 {
-	border-radius: 5% 50% 80%;
-	transform: rotateZ(-45deg) translate(-40px, -40px);
-}
-#link-bubble-3,
-#link-bubble-4 {
-	border-radius: 50% 5% 50% 60%;
-	transform: rotateZ(45deg) translate(40px, -40px);
-}
-#link-bubble-1:hover,
-#link-bubble-2:hover,
-#link-bubble-3:hover,
-#link-bubble-4:hover {
-	background-color: rgba(140,140,210,0.4)
-}
-#link-bubble-1,
-#link-bubble-3 {
-	transition: transform 0.5s, border-radius 1s, background-color 0.5s;
-}
-#link-bubble-2,
-#link-bubble-4 {
-	transition: transform 1s, border-radius 2s, background-color 0.5s;
-}
-
-.link-bubble-1-out {
-	border-radius: 50% 50% 50% !important;
-	transform: rotateZ(-45deg) translate(20px, 20px) !important;
-}
-.link-bubble-2-out {
-	border-radius: 50% 50% 50% !important;
-	transform: rotateZ(-45deg) translate(300px, 300px) !important;
-}
-.link-bubble-3-out {
-	border-radius: 50% 50% 50% !important;
-	transform: rotateZ(45deg) translate(-20px, 20px) !important;
-}
-.link-bubble-4-out {
-	border-radius: 50% 50% 50% !important;
-	transform: rotateZ(45deg) translate(-300px, 300px) !important;
-}
-
-#link-icon {
-	width: 30px;
-	transform: rotateZ(45deg);
-	opacity: 0.3
-}*/
 
 #overlay {
 	width: 100%;
@@ -635,6 +574,10 @@ button:focus {
 	top: 20px;
 	border-right: solid 5px rgba(10,10,10,0.7);
 	background-image: linear-gradient(to left, rgba(20,20,20,0.5), transparent);
+	transition: 1s
+}
+#profile-box:hover {
+	filter: brightness(120%)
 }
 
 #profile-tag {
@@ -656,6 +599,7 @@ button:focus {
 	margin-right: 5px;
 	cursor: pointer;
 	transition: 0.5s;
+	filter: brightness(80%);
 }
 #profile-image-box {
 	text-decoration: none;
@@ -693,4 +637,9 @@ button:focus {
 	background: linear-gradient(to right, rgba(200,200,200,0.01), rgba(200,200,200,0.1));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+}
+
+.logged-in {
+	cursor: none;
+	pointer-events: none;
 }
