@@ -7,10 +7,13 @@ const defImages = [
 ];
 
 let frag = new URLSearchParams(window.location.hash.slice(1));
-let img = document.getElementById('profile-image'),
-username = document.getElementById('profile-username'),
-discr = document.getElementById('profile-discr');
-if(frag.has('access_token')) {
+let img = document.getElementById('profile-image');
+
+if(frag.has('access_token') && frag.has('token_type')) {
+  let username = document.getElementById('profile-username'),
+  discr = document.getElementById('profile-discr'),
+  box = document.getElementById('profile-box');
+
   console.log("Logged-in");
 
   fetch('https://discordapp.com/api/users/@me', {
@@ -21,12 +24,14 @@ if(frag.has('access_token')) {
   .then(resp => resp.json())
   .then(res => {
     img.classList.add('logged-in');
-    console.log(res)
+    img.src = `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.webp?size=2048`;
+    username.innerHTML = res.username.length > 13 ? res.username.slice(0, -(res.username - 13)) + '...' : res.username;
+    discr.innerHTML = '#'+res.discriminator;
+    box.style['border-right'] = 'solid 5px #39cc48';
   })
   .catch(console.error)
 } else {
   console.log("Not logged-in");
+
   img.src = defImages[Math.floor(Math.random() * defImages.length)];
-  username.innerHTML = 'Guest'; /* max 15 letters */
-  discr.innerHTML = '#0000'
 }

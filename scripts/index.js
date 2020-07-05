@@ -206,13 +206,15 @@ function buttonUnhover(ind) {
 
 function prIn(img) {
   if(!img.classList.contains('logged-in')) {
-    img.style.filter = "brightness(70%)"
+    img.style.filter = "brightness(50%)";
+    document.getElementById('profile-image-box').style.color = 'rgba(255,255,255,0.8)'
   }
 }
 
 function prOut(img) {
   if(!img.classList.contains('logged-in')) {
-    img.style.filter = "none"
+    img.style.filter = "none";
+    document.getElementById('profile-image-box').style.color = 'transparent'
   }
 }
 

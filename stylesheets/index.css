@@ -657,6 +657,19 @@ button:focus {
 	cursor: pointer;
 	transition: 0.5s;
 }
+#profile-image-box {
+	text-decoration: none;
+	color: transparent;
+	font-family: Helvetica;
+	font-size: 10px;
+	font-weight: 900;
+	right: 0;
+	margin-top: 33px;
+	margin-right: 20px;
+	position: absolute;
+	transition: color 0.5s;
+	pointer-events: none;
+}
 
 #profile-username {
 	font-family: Helvetica;
