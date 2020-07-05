@@ -204,8 +204,10 @@ function buttonUnhover(ind) {
   btn.classList.remove('main-button-hover')
 }
 
-let frag = new URLSearchParams(window.location.hash.slice(1));
-console.log(frag.has('access_token') ? frag.get('access_token') : "No fragments")
+window.onload = () => {
+  let frag = new URLSearchParams(window.location.hash.slice(1));
+  console.log(frag.has('access_token') ? frag.get('access_token') : "No fragments")
+}
 
 //new URLSearchParams(window.location.hash.slice(1)).get('access_token')
 /*let params = new URLSearchParams(window.location.search);
