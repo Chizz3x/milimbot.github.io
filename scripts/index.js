@@ -58,6 +58,7 @@ window.onscroll = function() {
 
 window.addEventListener('mousemove', e => {
   let invite = document.getElementById('invite-bubble');
+  if(!invite) return;
   let invoff = invite.getBoundingClientRect();
   let x = e.clientX - invoff.left - invoff.width / 2,
   y = e.clientY - invoff.top - invoff.height / 2;
