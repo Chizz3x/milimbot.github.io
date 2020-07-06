@@ -1,4 +1,4 @@
-const pageNotFound = `<p style="font-family:Helvetica;font-size: 40px;font-weight:600;text-align:center;margin-top: 50%;color: white">Mobile devices are not supported yet</p>`;
+const pageNotFound = `<p style="font-family:Helvetica;font-size: 40px;font-weight:600;text-align:center;margin-top: 50%;color: white">Page does not work for your device</p>`;
 
 function mobileCheck() {
   let check = false;
@@ -22,6 +22,22 @@ function getBody(path) {
   if(mobileCheck()) {
     console.log("Using Mobile");
 
+    [
+      (() => {
+        let el = document.createElement('script');
+        el.src = "scripts/mobileIndex.js";
+        return el
+      })(),
+      (() => {
+        let el = document.createElement('link');
+        el.href = "stylesheets/mobileIndex.css";
+        el.rel = "stylesheet";
+        return el
+      })()
+    ].forEach(el => {
+      document.head.appendChild(el)
+    });
+
     let body = await getBody('mobileIndex.html');
     if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/mobileIndex.html');
     if(body.status === 404 || !body.data) {
@@ -29,7 +45,22 @@ function getBody(path) {
       return
     };
 
+    document.body.insertAdjacentHTML("beforeend", body.data);
 
+    [
+      (() => {
+        let el = document.createElement('script');
+        el.src = 'scripts/overlay.js';
+        return el
+      })(),
+      (() => {
+        let el = document.createElement('script');
+        el.src = 'scripts/doauth2.js';
+        return el
+      })()
+    ].forEach(el => {
+      document.body.appendChild(el)
+    })
   } else {
     console.log("Using PC");
 
