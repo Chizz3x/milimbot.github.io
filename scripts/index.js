@@ -26,32 +26,6 @@ function footer() {
   }
 }
 
-function linkBubbles() {
-  let b1 = document.getElementById('link-bubble-1');
-  let b2 = document.getElementById('link-bubble-2');
-  let b3 = document.getElementById('link-bubble-3');
-  let b4 = document.getElementById('link-bubble-4');
-  if(document.body.scrollTop + window.innerHeight >= (document.body.scrollHeight - 20)) {
-    if(!b1.classList.contains('link-bubble-1-out'))
-      b1.classList.add('link-bubble-1-out');
-    if(!b2.classList.contains('link-bubble-2-out'))
-      b2.classList.add('link-bubble-2-out');
-    if(!b3.classList.contains('link-bubble-3-out'))
-      b3.classList.add('link-bubble-3-out');
-    if(!b4.classList.contains('link-bubble-4-out'))
-      b4.classList.add('link-bubble-4-out');
-  } else {
-    if(b1.classList.contains('link-bubble-1-out'))
-      b1.classList.remove('link-bubble-1-out');
-    if(b2.classList.contains('link-bubble-2-out'))
-      b2.classList.remove('link-bubble-2-out');
-    if(b3.classList.contains('link-bubble-3-out'))
-      b3.classList.remove('link-bubble-3-out');
-    if(b4.classList.contains('link-bubble-4-out'))
-      b4.classList.remove('link-bubble-4-out');
-  }
-}
-
 window.onscroll = function() {
     menuStick();
     footer();
