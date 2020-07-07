@@ -602,7 +602,7 @@ button:focus {
 	transition: 0.5s;
 	filter: brightness(80%);
 }
-#profile-image-box {
+#profile-image-text {
 	text-decoration: none;
 	color: transparent;
 	font-family: Helvetica;
