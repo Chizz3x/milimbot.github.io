@@ -4,18 +4,20 @@ function openInNewTab(url) {
 }
 
 function menuStick() {
-  let posFromTop = document.body.scrollTop;
+  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
   let menu = document.getElementById('menu');
-  if(posFromTop === 0 && menu.classList.contains('menu-shrink')) {
+  if(scrollTop <= 10 && menu.classList.contains('menu-shrink')) {
     menu.classList.remove('menu-shrink')
-  } else if(posFromTop !== 0 && !menu.classList.contains('menu-shrink')) {
+  } else if(scrollTop > 10 && !menu.classList.contains('menu-shrink')) {
     menu.classList.add('menu-shrink')
   }
 }
 
 function footer() {
   let foot = document.getElementById('footer');
-  if(document.body.scrollTop + window.innerHeight >= (document.body.scrollHeight - 50)) {
+  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+  let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+  if((scrollTop + window.innerHeight) >= (scrollHeight - 50)) {
     if(foot.classList.contains('footer-shrink'))
       foot.classList.remove('footer-shrink')
   } else {
