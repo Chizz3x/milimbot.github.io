@@ -24,8 +24,9 @@ function getBody(path) {
 
     [
       (() => {
-        let el = document.createElement('script');
-        el.src = "scripts/mobileIndex.js";
+        let el = document.createElement('link');
+        el.href = "stylesheets/mobileIndex.css";
+        el.rel = "stylesheet";
         return el
       })()
     ].forEach(el => {
@@ -48,9 +49,8 @@ function getBody(path) {
         return el
       })(),
       (() => {
-        let el = document.createElement('link');
-        el.href = "stylesheets/mobileIndex.css";
-        el.rel = "stylesheet";
+        let el = document.createElement('script');
+        el.src = "scripts/mobileIndex.js";
         return el
       })(),
       (() => {
