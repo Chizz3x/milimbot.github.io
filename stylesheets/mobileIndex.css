@@ -37,6 +37,7 @@
 	background-color: rgba(5,5,5,0.5);
 	width: 80%;
 	position: fixed;
+	transform: translateX(-100%)
 }
 
 #menu-sidebar {
@@ -168,4 +169,8 @@
 	background: linear-gradient(to right, rgba(200,200,200,0.03), rgba(200,200,200,0.3));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+}
+
+.logged-in {
+	pointer-events: none;
 }

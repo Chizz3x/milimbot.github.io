@@ -20,18 +20,12 @@ function getBody(path) {
 
 (async () => {
   if(mobileCheck()) {
-    console.log("Using Mobile");
+    console.log("Using Mobile"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSGING
 
     [
       (() => {
         let el = document.createElement('script');
         el.src = "scripts/mobileIndex.js";
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('link');
-        el.href = "stylesheets/mobileIndex.css";
-        el.rel = "stylesheet";
         return el
       })()
     ].forEach(el => {
@@ -51,6 +45,12 @@ function getBody(path) {
       (() => {
         let el = document.createElement('script');
         el.src = 'scripts/overlay.js';
+        return el
+      })(),
+      (() => {
+        let el = document.createElement('link');
+        el.href = "stylesheets/mobileIndex.css";
+        el.rel = "stylesheet";
         return el
       })(),
       (() => {
