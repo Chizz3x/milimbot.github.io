@@ -52,7 +52,8 @@
 
 #avatar {
 	width: 90px;
-	animation: avatarFloat 4s alternate infinite ease-in-out
+	animation: avatarFloat 4s alternate infinite ease-in-out;
+	border-radius: 50%;
 }
 
 #milim-name {
