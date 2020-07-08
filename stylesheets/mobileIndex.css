@@ -172,5 +172,5 @@
 }
 
 .logged-in {
-	pointer-events: none;
+	display: none;
 }

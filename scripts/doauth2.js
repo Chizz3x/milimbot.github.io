@@ -7,7 +7,8 @@ const defImages = [
 ];
 
 let frag = new URLSearchParams(window.location.hash.slice(1));
-let img = document.getElementById('profile-image');
+let img = document.getElementById('profile-image'),
+imgText = document.getElementById('profile-image-text');
 
 if(frag.has('access_token') && frag.has('token_type')) {
   window.history.pushState("object or string", "Title", "/");
@@ -25,6 +26,7 @@ if(frag.has('access_token') && frag.has('token_type')) {
   .then(resp => resp.json())
   .then(res => {
     img.classList.add('logged-in');
+    imgText.classList.add('logged-in');
     img.src = `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.webp?size=2048`;
     username.innerHTML = res.username.length > 13 ? res.username.slice(0, -(res.username - 13)) + '...' : res.username;
     discr.innerHTML = '#'+res.discriminator;

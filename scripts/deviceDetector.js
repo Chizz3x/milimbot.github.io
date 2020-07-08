@@ -59,7 +59,6 @@ function getBody(path) {
         return el
       })()
     ].forEach(el => {
-      console.log(el);
       document.body.appendChild(el)
     })
   } else {
