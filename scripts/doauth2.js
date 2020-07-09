@@ -10,7 +10,7 @@ let frag = new URLSearchParams(window.location.hash.slice(1));
 let img = document.getElementById('profile-image'),
 imgText = document.getElementById('profile-image-text');
 
-if((frag.has('access_token') || !!(localStorage.oauth2 || {access_token: null}).access_token) && (frag.has('token_type') || !!(localStorage.oauth2 || {token_type: null}).token_type)) {
+if((frag.has('access_token') || !!localStorage.oauth2_access_token) && (frag.has('token_type') || !!localStorage.oauth2_token_type)) {
   let token = frag.has('access_token') ? frag.get('access_token') : localStorage.oauth2.access_token,
   tokenType = frag.has('token_type') ? frag.get('token_type') : localStorage.oauth2.token_type;
 
@@ -30,12 +30,14 @@ if((frag.has('access_token') || !!(localStorage.oauth2 || {access_token: null}).
   .then(res => {
     if(res.hasOwnProperty('code')) {
       console.log("Token expired : not logged-in");
+      localStorage.removeItem('oauth2_access_token');
+      localStorage.removeItem('oauth2_token_type');
       img.src = defImages[Math.floor(Math.random() * defImages.length)];
     } else {
       img.classList.add('logged-in');
 
-      if((localStorage.oauth2 || {access_token: null}).access_token !== token)
-        localStorage.oauth2 = {access_token: token, token_type: tokenType};
+      if(!localStorage.oauth2_access_token) localStorage.oauth2_access_token = token;
+      if(!localStorage.oauth2_token_type) localStorage.oauth2_token_type = tokenType;
 
       imgText.innerHTML = "";
       img.src = `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.webp?size=2048`;

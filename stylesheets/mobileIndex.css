@@ -42,7 +42,7 @@
 	top: 0;
 	bottom: 0;
 	border-right: solid 10px rgba(20,20,20,0.3);
-	z-index: 1;
+	z-index: 10;
 	background-color: rgba(5,5,5,0.5);
 	width: 80%;
 	position: fixed;
@@ -178,10 +178,6 @@
 	background: linear-gradient(to right, rgba(200,200,200,0.03), rgba(200,200,200,0.3));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-}
-
-.logged-in {
-	display: none;
 }
 
 #menu-arrow-box {
@@ -336,4 +332,17 @@
 	letter-spacing: 3px;
 	width: 100%;
 	height: 100px;
+}
+
+#screen {
+	overflow: hidden;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	position: fixed;
+	pointer-events: none;
+	z-index: 1;
+}
+.screen-transition {
+	transition: background-color 0.5s
 }
