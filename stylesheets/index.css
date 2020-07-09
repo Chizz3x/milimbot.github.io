@@ -548,13 +548,21 @@ button:focus {
 	transform: translateX(300px);
 }
 
+@keyframes overlayText {
+	from {
+		color: rgba(255,255,255,0.4)
+	}
+	to {
+		color: rgba(255,255,255,0.7)
+	}
+}
 #overlay {
 	width: 100%;
 	height: 100%;
 	z-index: 10;
 	font-family: sans-serif;
 	font-size: 30px;
-	color: rgba(255,255,255,0.7);
+	animation: overlayText 1s infinite alternate;
 	background-color: rgb(30,30,30);
 	position: fixed;
 	display: flex;

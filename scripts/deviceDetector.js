@@ -66,11 +66,6 @@ function getBody(path) {
 
     [
       (() => {
-        let el = document.createElement('script');
-        el.src = "scripts/index.js";
-        return el
-      })(),
-      (() => {
         let el = document.createElement('link');
         el.href = "stylesheets/index.css";
         el.rel = "stylesheet";
@@ -90,6 +85,11 @@ function getBody(path) {
     document.body.insertAdjacentHTML("beforeend", body.data);
 
     [
+      (() => {
+        let el = document.createElement('script');
+        el.src = "scripts/index.js";
+        return el
+      })(),
       (() => {
         let el = document.createElement('script');
         el.src = 'scripts/overlay.js';

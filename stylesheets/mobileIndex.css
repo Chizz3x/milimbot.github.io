@@ -9,19 +9,28 @@
 	src: url('fonts/Bold.woff') format('WOFF');
 }
 
+@keyframes overlayText {
+	from {
+		color: rgba(255,255,255,0.4)
+	}
+	to {
+		color: rgba(255,255,255,0.7)
+	}
+}
+
 #overlay {
 	width: 100%;
 	height: 100%;
 	z-index: 10;
 	font-family: sans-serif;
 	font-size: 60px;
-	color: rgba(255,255,255,0.7);
 	background-color: rgb(30,30,30);
 	position: fixed;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	transition: opacity 1s;
+	animation: overlayText 1s infinite alternate;
 }
 
 .disable-scroll {
@@ -173,4 +182,158 @@
 
 .logged-in {
 	display: none;
+}
+
+#menu-arrow-box {
+	width: 100px;
+	right: -60px;
+	height: 100%;
+	top: 0;
+	clip-path: polygon(50px 0%, 100% 0%, 100% 100%, 50px 100%);
+	border-radius: 0% 50% 50% 0%;
+	background-color: rgba(5,5,5,0.5);
+	position: absolute;
+	display: flex;
+	align-items: center;
+	transition: width 0.5s, right 0.5s;
+}
+.menu-arrow-box-out {
+	width: 0px !important;
+	right: 40px !important;
+}
+
+#menu-arrow {
+	width: 50px;
+	height: 50px;
+	right: 0;
+	position: absolute;
+	transform: scaleX(-1)
+}
+
+#invite-container {
+	width: 100%;
+	height: 1000px;
+	background-color: rgba(5,5,5,0.3);
+}
+
+.image-box {
+	position: absolute;
+	z-index: -1
+}
+.image {
+	width: 750px
+}
+
+@keyframes image1 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			5, 10, 0, 1
+		)
+	}
+}
+@keyframes image2 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, 0.0001,
+			-0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			-5, 10, 0, 1
+		)
+	}
+}
+@keyframes image3 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.000015,
+			0.1, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image4 {
+	to {
+		transform: matrix3d(
+			1, 0, 0, -0.0001,
+			0.05, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+
+#image-1-box {
+	margin-left: 5%;
+	top: -10px;
+	animation: image1 5s infinite alternate ease-in-out
+}
+#image-1 {
+	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 80% 0%);
+	transition: transform 2s;
+}
+
+#image-2-box {
+	right: -250px;
+	top: -290px;
+	animation: image2 4.5s infinite alternate ease-in-out
+}
+#image-2 {
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%, 100% 0%);
+	transition: transform 2s;
+}
+#image-3-box {
+	right: -300px;
+	top: 470px;
+	animation: image3 6s infinite alternate ease-in-out
+}
+#image-3 {
+	clip-path: polygon(0% 0%, 10% 100%, 70% 100%, 70% 0%);
+	transition: transform 2s;
+}
+#image-4-box {
+	margin-top: 320px;
+	left: -100px;
+	animation: image4 5.5s infinite alternate ease-in-out
+}
+#image-4 {
+	transform: rotateZ(30deg);
+	clip-path: polygon(30% 5%, 0% 100%, 30% 100%, 100% 40%, 100% 40%);
+	transition: transform 2s;
+}
+
+#invite-bubble {
+	background-color: rgba(130, 130, 180, 0.6);
+	display: flex;
+	justify-content: center;
+	border-radius: 50%;
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
+	transition: background-color 0.1s, box-shadow 0.1s;
+	box-shadow: 0 0 20px 10px rgba(130, 130, 180, 0.3);
+}
+
+#invite-bubble-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 450px;
+	position: absolute;
+	margin-top: 450px;
+}
+
+#invite-text-container {
+	margin-top: 850px;
+	position: absolute;
+	text-align: center;
+	font-family: Helvetica;
+	font-size: 50px;
+	color: rgba(250,250,250,0.8);
+	letter-spacing: 3px;
+	width: 100%;
+	height: 100px;
 }

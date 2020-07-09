@@ -10,7 +10,10 @@ let frag = new URLSearchParams(window.location.hash.slice(1));
 let img = document.getElementById('profile-image'),
 imgText = document.getElementById('profile-image-text');
 
-if(frag.has('access_token') && frag.has('token_type')) {
+if((frag.has('access_token') || !!(localStorage.oauth2 || {access_token: null}).access_token) && (frag.has('token_type') || !!(localStorage.oauth2 || {token_type: null}).token_type)) {
+  let token = frag.has('access_token') ? frag.get('access_token') : localStorage.oauth2.access_token,
+  tokenType = frag.has('token_type') ? frag.get('token_type') : localStorage.oauth2.token_type;
+
   window.history.pushState("object or string", "Title", "/");
   let username = document.getElementById('profile-username'),
   discr = document.getElementById('profile-discr'),
@@ -20,21 +23,29 @@ if(frag.has('access_token') && frag.has('token_type')) {
 
   fetch('https://discordapp.com/api/users/@me', {
     headers: {
-			authorization: `${frag.get('token_type')} ${frag.get('access_token')}`
+			authorization: `${tokenType} ${token}`
 		}
   })
   .then(resp => resp.json())
   .then(res => {
-    img.classList.add('logged-in');
-    imgText.classList.add('logged-in');
-    img.src = `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.webp?size=2048`;
-    username.innerHTML = res.username.length > 13 ? res.username.slice(0, -(res.username - 13)) + '...' : res.username;
-    discr.innerHTML = '#'+res.discriminator;
-    box.style['border-right'] = 'solid 5px #39cc48';
+    if(res.hasOwnProperty('code')) {
+      console.log("Token expired : not logged-in");
+      img.src = defImages[Math.floor(Math.random() * defImages.length)];
+    } else {
+      img.classList.add('logged-in');
+
+      if((localStorage.oauth2 || {access_token: null}).access_token !== token)
+        localStorage.oauth2 = {access_token: token, token_type: tokenType};
+
+      imgText.innerHTML = "";
+      img.src = `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.webp?size=2048`;
+      username.innerHTML = res.username.length > 13 ? res.username.slice(0, -(res.username - 13)) + '...' : res.username;
+      discr.innerHTML = '#'+res.discriminator;
+      box.style['border-right'] = 'solid 5px #39cc48';
+    }
   })
   .catch(console.error)
 } else {
   console.log("Not logged-in");
-
   img.src = defImages[Math.floor(Math.random() * defImages.length)];
 }

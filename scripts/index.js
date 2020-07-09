@@ -193,3 +193,7 @@ function prOut(img) {
     document.getElementById('profile-image-text').style.color = 'transparent'
   }
 }
+
+window.onload = () => {
+  sessionStorage.loaded = true
+};

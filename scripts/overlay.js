@@ -81,11 +81,20 @@ let actions = [
 ];
 
 function end() {
-  setTimeout(() => {
-    let overlay = document.getElementById('overlay');
-    overlay.style.opacity = "0";
-    overlay.style['pointer-events'] = 'none';
-    doc.classList.remove('disable-scroll');
+  let endInt;
+
+  function clrEndInt() {
+    clearInterval(endInt)
+  }
+
+  endInt = setInterval(() => {
+    if(sessionStorage.loaded) {
+      clrEndInt();
+      let overlay = document.getElementById('overlay');
+      overlay.style.opacity = "0";
+      overlay.style['pointer-events'] = 'none';
+      doc.classList.remove('disable-scroll');
+    }
   }, 500)
 }
 
