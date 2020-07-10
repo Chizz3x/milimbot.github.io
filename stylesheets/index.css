@@ -470,6 +470,7 @@ button:focus {
 	right: 0;
 	height: 80px;
 	bottom: 0;
+	z-index: 1;
 	position: fixed;
 	background-color: rgba(5,5,5,0.2);
 	overflow: hidden;

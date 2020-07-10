@@ -57,16 +57,24 @@ window.addEventListener('touchmove', e => {
   }
 });
 
-window.onload = () => {
-  sessionStorage.loaded = true
-};
-
-function bubbleTouch(el) {
-  el.style['box-shadow'] = '0 0 25px 10px rgba(242, 142, 131, 0.3)';
-  el.style['background-color'] = 'rgba(242, 142, 131, 0.6)'
+function footer() {
+  let foot = document.getElementById('footer');
+  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+  let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+  if((scrollTop + window.innerHeight) >= (scrollHeight - 50)) {
+    if(foot.classList.contains('footer-shrink'))
+      foot.classList.remove('footer-shrink')
+  } else {
+    if(!foot.classList.contains('footer-shrink'))
+      foot.classList.add('footer-shrink')
+  }
 }
 
-function bubbleTouchStop(el) {
-  el.style['box-shadow'] = '0 0 20px 10px rgba(130, 130, 180, 0.3)';
-  el.style['background-color'] = 'rgba(130, 130, 180, 0.6)'
+window.onload = () => {
+  sessionStorage.loaded = true;
+	footer();
+}
+
+window.onscroll = function() {
+    footer();
 }

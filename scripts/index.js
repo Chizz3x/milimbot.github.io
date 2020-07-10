@@ -26,6 +26,12 @@ function footer() {
   }
 }
 
+window.onload = function() {
+  sessionStorage.loaded = true;
+  menuStick();
+  footer();
+}
+
 window.onscroll = function() {
     menuStick();
     footer();
@@ -193,7 +199,3 @@ function prOut(img) {
     document.getElementById('profile-image-text').style.color = 'transparent'
   }
 }
-
-window.onload = () => {
-  sessionStorage.loaded = true
-};
