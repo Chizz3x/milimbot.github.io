@@ -11,13 +11,14 @@ let img = document.getElementById('profile-image'),
 imgText = document.getElementById('profile-image-text');
 
 if((frag.has('access_token') || !!localStorage.oauth2_access_token) && (frag.has('token_type') || !!localStorage.oauth2_token_type)) {
-  let token = frag.has('access_token') ? frag.get('access_token') : localStorage.oauth2.access_token,
-  tokenType = frag.has('token_type') ? frag.get('token_type') : localStorage.oauth2.token_type;
+  let token = frag.has('access_token') ? frag.get('access_token') : localStorage.oauth2_access_token,
+  tokenType = frag.has('token_type') ? frag.get('token_type') : localStorage.oauth2_token_type;
 
   window.history.pushState("object or string", "Title", "/");
   let username = document.getElementById('profile-username'),
   discr = document.getElementById('profile-discr'),
-  box = document.getElementById('profile-box');
+  box = document.getElementById('profile-box'),
+  imgBox = document.getElementById('profile-image-box');
 
   console.log("Logged-in");
 
@@ -40,6 +41,7 @@ if((frag.has('access_token') || !!localStorage.oauth2_access_token) && (frag.has
       if(!localStorage.oauth2_token_type) localStorage.oauth2_token_type = tokenType;
 
       imgText.innerHTML = "";
+      imgBox.removeAttribute('href');
       img.src = `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.webp?size=2048`;
       username.innerHTML = res.username.length > 13 ? res.username.slice(0, -(res.username - 13)) + '...' : res.username;
       discr.innerHTML = '#'+res.discriminator;
