@@ -416,13 +416,12 @@ button:focus {
 }
 #image-9-box {
 	position: relative;
-	bottom: 0;
+	bottom: -25%;
 	animation: image9 6s infinite alternate ease-in-out;
 }
 #image-9 {
 	width: 400px;
 	height: auto;
-	margin-bottom: -300px;
 	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 95% 0%);
 	transition: transform 3s;
 }
@@ -434,7 +433,7 @@ button:focus {
 #image-10 {
 	width: 400px;
 	height: auto;
-	margin-bottom: -270px;
+	margin-bottom: -70%;
 	clip-path: polygon(30% 0%, 0% 100%, 100% 100%, 90% 5%);
 	transition: transform 3s;
 }
@@ -447,7 +446,7 @@ button:focus {
 #image-11 {
 	width: 400px;
 	height: auto;
-	margin-bottom: -250px;
+	margin-bottom: -60%;
 	clip-path: polygon(5% 10%, 10% 100%, 100% 100%, 95% 0%);
 	transition: transform 2s;
 }
@@ -460,7 +459,7 @@ button:focus {
 #image-12 {
 	width: 400px;
 	height: auto;
-	margin-bottom: -200px;
+	margin-bottom: -50%;
 	clip-path: polygon(0% 10%, 15% 100%, 100% 100%, 100% 0%);
 	transition: transform 3s;
 }

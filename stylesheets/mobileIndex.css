@@ -268,7 +268,6 @@
 }
 #image-1 {
 	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 80% 0%);
-	transition: transform 2s;
 }
 
 #image-2-box {
@@ -278,7 +277,6 @@
 }
 #image-2 {
 	clip-path: polygon(50% 0%, 0% 100%, 100% 100%, 100% 0%);
-	transition: transform 2s;
 }
 #image-3-box {
 	right: -300px;
@@ -287,7 +285,6 @@
 }
 #image-3 {
 	clip-path: polygon(0% 0%, 10% 100%, 70% 100%, 70% 0%);
-	transition: transform 2s;
 }
 #image-4-box {
 	margin-top: 320px;
@@ -297,7 +294,6 @@
 #image-4 {
 	transform: rotateZ(30deg);
 	clip-path: polygon(30% 5%, 0% 100%, 30% 100%, 100% 40%, 100% 40%);
-	transition: transform 2s;
 }
 
 #invite-bubble {
@@ -410,10 +406,6 @@ button:focus {
 	transition: height 0.3s;
 }
 
-.footer-shrink {
-	height: 0 !important;
-}
-
 #love {
 	font-family: sans-serif;
 	font-size: 40px;
@@ -422,4 +414,57 @@ button:focus {
 	justify-content: center;
 	display: flex;
 	margin-bottom: 0;
+}
+
+#footer-images-container {
+	position: relative;
+	bottom: 0;
+	height: 400px;
+	width: 100%;
+	overflow: hidden;
+	background-color: rgba(5,5,5,0.3)
+}
+
+@keyframes image5 {
+	to {
+		transform: matrix3d(
+			1, -0.01, 0, -0.000005,
+			-0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+@keyframes image6 {
+	to {
+		transform: matrix3d(
+			1, 0.1, 0, 0.00001,
+			-0.01, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 10, 0, 1
+		)
+	}
+}
+
+#image-5-box {
+	position: relative;
+	bottom: 0;
+	animation: image5 6s infinite alternate ease-in-out;
+}
+#image-5 {
+	width: 550px;
+	height: auto;
+	margin-bottom: -50%;
+	clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 95% 0%);
+}
+#image-6-box {
+	bottom: 0;
+	right: 0;
+	animation: image6 5s infinite alternate ease-in-out;
+}
+#image-6 {
+	width: 550px;
+	height: auto;
+	margin-bottom: -80%;
+	clip-path: polygon(30% 0%, 0% 100%, 100% 100%, 90% 5%);
 }

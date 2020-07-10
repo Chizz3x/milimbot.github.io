@@ -57,24 +57,6 @@ window.addEventListener('touchmove', e => {
   }
 });
 
-function footer() {
-  let foot = document.getElementById('footer');
-  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-  let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
-  if((scrollTop + window.innerHeight) >= (scrollHeight - 50)) {
-    if(foot.classList.contains('footer-shrink'))
-      foot.classList.remove('footer-shrink')
-  } else {
-    if(!foot.classList.contains('footer-shrink'))
-      foot.classList.add('footer-shrink')
-  }
-}
-
 window.onload = () => {
   sessionStorage.loaded = true;
-	footer();
-}
-
-window.onscroll = function() {
-    footer();
 }
