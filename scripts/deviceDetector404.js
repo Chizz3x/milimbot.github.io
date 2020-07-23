@@ -25,7 +25,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('link');
-        el.href = "stylesheets/mobileIndex.css";
+        el.href = "stylesheets/mobileIndex404.css";
         el.rel = "stylesheet";
         return el
       })()
@@ -33,8 +33,8 @@ function getBody(path) {
       document.head.appendChild(el)
     });
 
-    let body = await getBody('mobileIndex.html');
-    if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/mobileIndex.html');
+    let body = await getBody('mobileIndex404.html');
+    if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/mobileIndex404.html');
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
@@ -45,29 +45,19 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('script');
-        el.src = 'scripts/overlay.js';
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = "scripts/mobileIndex.js";
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = 'scripts/doauth2.js';
+        el.src = "scripts/mobileIndex404.js";
         return el
       })()
     ].forEach(el => {
       document.body.appendChild(el)
     })
   } else {
-    console.log("Using PC"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
+    return console.log("Using PC"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
     [
       (() => {
         let el = document.createElement('link');
-        el.href = "stylesheets/index.css";
+        el.href = "stylesheets/index404.css";
         el.rel = "stylesheet";
         return el
       })()
@@ -75,8 +65,8 @@ function getBody(path) {
       document.head.appendChild(el)
     });
 
-    let body = await getBody('pcIndex.html');
-    if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/pcIndex.html');
+    let body = await getBody('pcIndex404.html');
+    if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/pcIndex404.html');
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
@@ -87,17 +77,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('script');
-        el.src = "scripts/index.js";
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = 'scripts/overlay.js';
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = 'scripts/doauth2.js';
+        el.src = "scripts/index404.js";
         return el
       })()
     ].forEach(el => {
