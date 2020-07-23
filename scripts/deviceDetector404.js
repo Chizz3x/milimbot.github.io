@@ -52,7 +52,7 @@ function getBody(path) {
       document.body.appendChild(el)
     })
   } else {
-    return console.log("Using PC"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
+    console.log("Using PC"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
     [
       (() => {
