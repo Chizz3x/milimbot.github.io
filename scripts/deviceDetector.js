@@ -6,7 +6,7 @@ function mobileCheck() {
   return check
 };
 
-function getBody(path) {
+function reqBody(path) {
   return new Promise(p => {
     fetch(path)
     .then(resp => resp.text())
@@ -16,6 +16,33 @@ function getBody(path) {
       p({status: 404, data: err})
     })
   })
+}
+
+const route = window.location.pathname.split(/\//g)[1];
+
+const routeScripts = {
+  minecraft: ['index']
+};
+
+function buildScripts(names) {
+  let scripts = [], el;
+  for(let i = 0; i < names.length; i++) {
+    el = document.createElement('script');
+    el.src = `scripts/${names[i]}.js`;
+    scripts.push(el)
+  };
+  return scripts
+}
+
+function getScripts(type) {
+  let type0 = type === 'mobile' ? 'mobileI' : 'i'
+  if(!route) return buildScripts(['overlay', type0+'ndex', 'doauth2'])
+    else if(route === 'minecraft') return buildScripts(['ndex'])
+}
+
+function getBody(type) {
+  if(!route) return `https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/${type}Index.html`
+    else return `https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/${route}/${type}Index.html`
 }
 
 (async () => {
@@ -33,8 +60,8 @@ function getBody(path) {
       document.head.appendChild(el)
     });
 
-    let body = await getBody('mobileIndex.html');
-    if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/mobileIndex.html');
+    let body = await reqBody('mobileIndex.html');
+    if(body.status === 404) body = await getBody(getBody('mobile'));
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
@@ -42,23 +69,7 @@ function getBody(path) {
 
     document.body.insertAdjacentHTML("beforeend", body.data);
 
-    [
-      (() => {
-        let el = document.createElement('script');
-        el.src = 'scripts/overlay.js';
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = "scripts/mobileIndex.js";
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = 'scripts/doauth2.js';
-        return el
-      })()
-    ].forEach(el => {
+    getScripts('mobile').forEach(el => {
       document.body.appendChild(el)
     })
   } else {
@@ -75,8 +86,8 @@ function getBody(path) {
       document.head.appendChild(el)
     });
 
-    let body = await getBody('pcIndex.html');
-    if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/pcIndex.html');
+    let body = await reqBody('pcIndex.html');
+    if(body.status === 404) body = await getBody(getBody('pc'));
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
@@ -84,23 +95,7 @@ function getBody(path) {
 
     document.body.insertAdjacentHTML("beforeend", body.data);
 
-    [
-      (() => {
-        let el = document.createElement('script');
-        el.src = "scripts/index.js";
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = 'scripts/overlay.js';
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('script');
-        el.src = 'scripts/doauth2.js';
-        return el
-      })()
-    ].forEach(el => {
+    getScripts('pc').forEach(el => {
       document.body.appendChild(el)
     })
   }
