@@ -37,7 +37,7 @@ function buildScripts(names) {
 function getScripts(type) {
   let type0 = type === 'mobile' ? 'mobileI' : 'i'
   if(!route) return buildScripts(['overlay', type0+'ndex', 'doauth2'])
-    else if(route === 'minecraft') return buildScripts(['ndex'])
+    else if(route === 'minecraft') return buildScripts([type0+'ndex'])
 }
 
 function getBody(type) {
