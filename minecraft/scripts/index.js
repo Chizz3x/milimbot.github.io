@@ -34,7 +34,7 @@ class Block {
     block.style.animation = `${this.speed / 100}s rotateBlock linear infinite${Math.random() >= 0.5 ? ' reverse' : ''}`;
     blockBox.style.left = `${Math.random() * window.innerWidth}px`
 
-    block.src = `../images/${this.id}.jpg`;
+    block.src = `images/${this.id}.jpg`;
 
     blockBox.appendChild(block);
     document.getElementById('container-blocks').appendChild(blockBox);
