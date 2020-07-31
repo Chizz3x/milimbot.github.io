@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'Minecraftia';
-  src: url('fonts/MinecraftiaRegular.ttf') format('truetype');
+  src: url('../fonts/MinecraftiaRegular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

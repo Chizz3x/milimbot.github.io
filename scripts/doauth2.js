@@ -22,7 +22,7 @@ if((frag.has('access_token') || !!localStorage.oauth2_access_token) && (frag.has
 
   console.log("Logged-in");
 
-  fetch('https://discordapp.com/api/users/@me', {
+  fetch('https://discord.com/api/users/@me', {
     headers: {
 			authorization: `${tokenType} ${token}`
 		}
