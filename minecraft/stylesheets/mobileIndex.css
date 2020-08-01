@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'Minecraftia';
-  src: url('fonts/MinecraftiaRegular.ttf') format('truetype');
+  src: url('../fonts/MinecraftiaRegular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -68,7 +68,7 @@ button:focus {
   height: 1000px;
   overflow: hidden;
   border: 10px solid rgba(10,10,10,0.8);
-  background-image: url('images/dirt.jpg');
+  background-image: url('../images/dirt.jpg');
   background-size: cover;
 }
 
@@ -154,7 +154,7 @@ p,
   border-left: solid 2px grey;
   width: 150px;
   height: 70px;
-  background-image: url('images/stone.jpg');
+  background-image: url('../images/stone.jpg');
   background-size: 200px;
   font-size: 30px;
   color: rgb(50,230,50);
