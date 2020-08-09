@@ -20,10 +20,6 @@ function reqBody(path) {
 
 const route = window.location.pathname.split(/\//g)[1];
 
-const routeScripts = {
-  minecraft: ['index']
-};
-
 function buildScripts(names) {
   let scripts = [], el;
   for(let i = 0; i < names.length; i++) {
@@ -36,7 +32,7 @@ function buildScripts(names) {
 
 function getScripts(type) {
   let type0 = type === 'mobile' ? 'mobileI' : 'i'
-  if(!route) return buildScripts(['overlay', type0+'ndex', 'doauth2'])
+  if(!route) return buildScripts(['overlay', type0+'ndex'])
     else if(route === 'minecraft') return buildScripts([type0+'ndex'])
 }
 
@@ -61,7 +57,7 @@ function getBody(type) {
     });
 
     let body = await reqBody('mobileIndex.html');
-    if(body.status === 404) body = await getBody(getBody('mobile'));
+    if(body.status === 404) body = await reqBody(getBody('mobile'));
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
@@ -87,7 +83,7 @@ function getBody(type) {
     });
 
     let body = await reqBody('pcIndex.html');
-    if(body.status === 404) body = await getBody(getBody('pc'));
+    if(body.status === 404) body = await reqBody(getBody('pc'));
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
