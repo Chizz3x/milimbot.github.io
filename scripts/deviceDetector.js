@@ -69,7 +69,7 @@ function getBody(type) {
       document.body.appendChild(el)
     })
   } else {
-    console.log("Using PC"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
+    return console.log("Using PC"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
     [
       (() => {
