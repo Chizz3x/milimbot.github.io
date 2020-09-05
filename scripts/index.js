@@ -38,18 +38,27 @@ window.onscroll = function() {
 }
 
 window.addEventListener('mousemove', e => {
-  let invite = document.getElementById('invite-bubble');
-  if(!invite) return;
+  let invite = document.getElementById('invite-bubble'),
+  inviteIcon = document.getElementById('invite-icon');
+
   let invoff = invite.getBoundingClientRect();
   let x = e.clientX - invoff.left - invoff.width / 2,
   y = e.clientY - invoff.top - invoff.height / 2;
   if(y > 416) y = 416;
+
   invite.style.transform = `matrix3d(
 		1, 0, 0, ${x / 500000},
 		0, 1, 0, ${y / 500000},
 		0, 0, 1, 0,
 		${x / 80}, ${y / 80}, 0, 1
 	)`;
+
+  let invoffi = inviteIcon.getBoundingClientRect();
+  let xi = e.clientX - invoffi.left - invoffi.width / 2,
+  yi = e.clientY - invoffi.top - invoffi.height / 2;
+  if(yi > 416) yi = 416;
+
+  inviteIcon.style.transform = `translate(${xi / 100}px, ${yi / 100}px)`;
 });
 
 const matr = [
@@ -115,10 +124,6 @@ function activate() {
   images[9].style.transform = `matrix3d(${editMatr([[12, 10], [13, -20]])})`;
   images[10].style.transform = `matrix3d(${editMatr([[12, -5], [13, -20]])})`;
   images[11].style.transform = `matrix3d(${editMatr([[12, -10], [13, -20]])})`
-
-  document.getElementById('btn-1').style.transform = `matrix3d(${editMatr([[13, -30]])})`;
-  document.getElementById('btn-2').style.transform = `matrix3d(${editMatr([[12, 20], [13, -30], [1, 0.09], [4, -0.09]])})`;
-  document.getElementById('btn-3').style.transform = `matrix3d(${editMatr([[12, -20], [13, -30], [1, -0.09], [4, 0.09]])})`
 }
 
 function deactivate() {
@@ -155,10 +160,7 @@ function deactivate() {
     document.getElementById('image-9'),
     document.getElementById('image-10'),
     document.getElementById('image-11'),
-    document.getElementById('image-12'),
-    document.getElementById('btn-1'),
-    document.getElementById('btn-2'),
-    document.getElementById('btn-3')
+    document.getElementById('image-12')
   ];
 
   images.forEach(i => {i.style.transform = `none`})
@@ -176,12 +178,4 @@ function widgetSlide() {
   }
 }
 
-function buttonHover(ind) {
-  let btn = document.getElementById(`btn-${ind}`);
-  btn.classList.add('main-button-hover')
-}
-
-function buttonUnhover(ind) {
-  let btn = document.getElementById(`btn-${ind}`);
-  btn.classList.remove('main-button-hover')
-}
+//document.getElementById('widget').style.top = `${document.documentElement.clientHeight / 2}px`;
