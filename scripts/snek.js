@@ -22,7 +22,7 @@ function resetVariables() {
   pendingParts = [];
   pendingPlace = [];
   stop = false;
-  speed = 400;
+  speed = 200;
   food = [];
   foodEaten = false;
   snek = [];
