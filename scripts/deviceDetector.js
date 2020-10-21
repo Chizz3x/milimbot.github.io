@@ -31,9 +31,20 @@ function buildScripts(names) {
 }
 
 function getScripts(type) {
-  let type0 = type === 'mobile' ? 'mobileI' : 'i'
-  if(!route) return buildScripts(['overlay', type0+'ndex', 'snek', 'faces']) //ADD NEW JS FILES TO MAIN
-    else if(route === 'minecraft') return buildScripts([type0+'ndex'])
+  let type0 = type === 'mobile' ? 'mobileI' : 'i';
+  let files = [];
+  if(!route) {
+    files.push('overlay');
+    files.push(type0+'ndex');
+    if(type === 'pc') { //ADD NEW JS FILES TO MAIN
+      files.push('faces');
+      files.push('snek');
+    };
+    return buildScripts(files)
+  } else {
+    files.push(type0+'ndex');
+    if(route === 'minecraft') return buildScripts(files)
+  }
 }
 
 function getBody(type) {
