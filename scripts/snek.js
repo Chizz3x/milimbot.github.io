@@ -267,7 +267,7 @@ function loadScreen() {
 
   let filter = document.createElement('img');
   filter.id = 'snek-filter';
-  filter.src = 'http://api.thumbr.it/whitenoise-1000x1000.png?background=4ea6ca00&noise=2b2b2b&density=56&opacity=12';
+  filter.src = 'https://github.com/Chizz3x/Milim.bot.github.io/blob/master/images/snek/whitenoise.png?raw=true';
   holder.appendChild(filter);
 
   holder.appendChild(elements.frame);
