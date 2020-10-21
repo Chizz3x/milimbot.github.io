@@ -32,9 +32,8 @@ function buildScripts(names) {
 
 function getScripts(type) {
   let type0 = type === 'mobile' ? 'mobileI' : 'i'
-  if(!route) return buildScripts(['overlay', type0+'ndex'])
+  if(!route) return buildScripts(['overlay', type0+'ndex', 'snek', 'faces']) //ADD NEW JS FILES TO MAIN
     else if(route === 'minecraft') return buildScripts([type0+'ndex'])
-      else return buildScripts([type0+'ndex'])
 }
 
 function getBody(type) {
