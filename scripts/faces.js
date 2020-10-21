@@ -32,9 +32,10 @@ for(let i = 0; i < imagesCount; i++) {
 let faceInterval = setInterval(() => {
   if(window.hasOwnProperty('onFaceLoad')) {
     killFaceInterval();
+    console.log("faces loaded");
     window.onFaceLoad()
   }
-})
+}, 100)
 
 function killFaceInterval() {
   clearInterval(faceInterval)
