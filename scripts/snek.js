@@ -443,6 +443,9 @@ function start() {
       elements.scoreDisplayBox.classList.remove('snek-hide');
       this.moving = false;
 
+      elements.speed.innerHTML = 0;
+      elements.score.innerHTML = 0;
+
       for(let i = 0; i < bodyLength; i++) {
         snek.push(new component(step, step, startPos[0] - step * i, startPos[1], i))
       };
