@@ -43,7 +43,7 @@ function getBody(type) {
 
 (async () => {
   if(mobileCheck()) {
-    console.log("Using Mobile"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
+    console.log("Using Mobile"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
     [
       (() => {
@@ -69,12 +69,18 @@ function getBody(type) {
       document.body.appendChild(el)
     })
   } else {
-    console.log("Using PC"); //DONT FORGET TO REMOVE "RETURN" BEFORE PUSHING
+    console.log("Using PC"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
     [
       (() => {
         let el = document.createElement('link');
         el.href = "stylesheets/index.css";
+        el.rel = "stylesheet";
+        return el
+      })(),
+      (() => {
+        let el = document.createElement('link');
+        el.href = "stylesheets/snek.css";
         el.rel = "stylesheet";
         return el
       })()

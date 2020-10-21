@@ -26,15 +26,50 @@ function footer() {
   }
 }
 
+let first = {top: document.documentElement.offsetHeight, el: null};
+
+function faces() {
+  if(!sessionStorage.loaded || !first.el) return;
+  let faces = document.getElementsByClassName('face');
+
+  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+
+  let rect = first.el.getBoundingClientRect();
+  if(1120 < scrollTop + window.innerHeight) {
+    let num = ((scrollTop + window.innerHeight) - (rect.top + window.scrollY)) / 20;
+    for(let i = 0; i < faces.length; i++) {
+      faces[i].style.transform = `translateY(${num}px)`;
+    }
+  }
+}
+
+function getFirstFace() {
+  let faces = document.getElementsByClassName('face-box');
+  for(let i = 0; i < faces.length; i++) {
+    let rect = faces[i].getBoundingClientRect();
+    if(first.top > rect.top + window.scrollY) {
+      first.top = rect.top + window.scrollY;
+      first.el = faces[i]
+    }
+  }
+}
+
 window.onload = function() {
   sessionStorage.loaded = true;
+
   menuStick();
   footer();
+  faces();
+}
+
+window.onFaceLoad = function() {
+  getFirstFace();
 }
 
 window.onscroll = function() {
     menuStick();
     footer();
+    faces();
 }
 
 window.addEventListener('mousemove', e => {
@@ -66,7 +101,7 @@ const matr = [
   0, 1, 0, 0,
   0, 0, 1, 0,
   0, 0, 0, 1
-]
+];
 
 function editMatr(arr) {
   let newMatr = [...matr];
