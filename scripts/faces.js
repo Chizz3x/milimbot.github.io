@@ -29,4 +29,13 @@ for(let i = 0; i < imagesCount; i++) {
   cont.appendChild(box);
 };
 
-window.onFaceLoad();
+let faceInterval = setInterval(() => {
+  if(window.hasOwnProperty('onFaceLoad')) {
+    killFaceInterval();
+    window.onFaceLoad()
+  }
+})
+
+function killFaceInterval() {
+  clearInterval(faceInterval)
+}
