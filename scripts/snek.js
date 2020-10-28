@@ -448,8 +448,8 @@ function start() {
       };
 
       window.localStorage.snekScore = elements.score.innerHTML;
-      if((window.localStorage.snekBestScore || "0") < elements.score.innerHTML)
-        window.localStorage.snekBestScore = elements.score.innerHTML;
+      if((window.localStorage.snekBestScore || 0) < eval(elements.score.innerHTML))
+        window.localStorage.snekBestScore = eval(elements.score.innerHTML);
 
       elements.scoreDisplay.innerHTML = window.localStorage.snekScore;
       elements.scoreDisplayText.innerHTML = 'Recent score';

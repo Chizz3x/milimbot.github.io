@@ -54,6 +54,37 @@ function getFirstFace() {
   }
 }
 
+function moveLine() {
+  let line = document.getElementById('left-path');
+  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+
+  let lineRect = line.getBoundingClientRect();
+  let middleOffset = scrollTop + window.innerHeight / 2 - line.offsetTop;
+
+  if(line.offsetTop - scrollTop - window.innerHeight / 2 < 0
+     && line.offsetTop + lineRect.height - scrollTop - window.innerHeight / 2 > 0) {
+    let middlePoint = 100 / lineRect.height * middleOffset;
+    line.style['border-image-source'] = `linear-gradient(to bottom, transparent ${middlePoint - 10 < 0 ? 0 : middlePoint - 10}%, rgba(180,100,200,.5) ${middlePoint}%, transparent ${middlePoint + 10 > 100 ? 100 : middlePoint + 10}%)`
+  }
+}
+
+function topTop() {
+  let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+  if(scrollTop >= 700) {
+    let el = document.getElementById('to-top');
+
+    el.style.transform = `translateY(0px)`
+  } else {
+    let el = document.getElementById('to-top');
+
+    el.style.transform = `translateY(70px)`
+  }
+}
+
+function toTop() {
+  document.documentElement.scrollTop = 0;
+}
+
 window.onload = function() {
   sessionStorage.loaded = true;
 
@@ -70,6 +101,8 @@ window.onscroll = function() {
     menuStick();
     footer();
     faces();
+    moveLine();
+    topTop();
 }
 
 window.addEventListener('mousemove', e => {
