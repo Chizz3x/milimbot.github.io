@@ -20,85 +20,104 @@ function reqBody(path) {
 
 const route = window.location.pathname.split(/\//g)[1];
 
-async function buildScripts(names) {
-  let scripts = [], el, check;
-  for(let i = 0; i < names.length; i++) {
-    check = await fetch(`${window.location.href}scripts/${names[i]}.js`);
-    if(check.status !== 200) continue;
+function buildScripts(names) {
+  return new Promise(async res => {
+    let scripts = [], el, check;
+    for(let i = 0; i < names.length; i++) {
+      check = await fetch(`${window.location.href}scripts/${names[i]}.js`);
+      if(check.status !== 200) continue;
 
-    el = document.createElement('script');
-    el.src = `scripts/${names[i]}.js`;
+      el = document.createElement('script');
+      el.src = `scripts/${names[i]}.js`;
 
-    scripts.push(el)
-  };
-  console.log('Scripts added:', names, scripts);
-  return scripts
+      scripts.push(el)
+    };
+
+    console.log('Scripts added:', names, scripts);
+
+    res(scripts)
+  })
 }
 
 function getScripts(type) {
-  let type0 = type === 'mobile' ? 'mobileI' : type === 'pc' ? 'i' : undefined;
+  return new Promise(async (res, rej) => {
+    let type0 = type === 'mobile' ? 'mobileI' : type === 'pc' ? 'i' : undefined;
 
-  if(!type0) return [];
+    if(!type0) return rej([]);
 
-  let files = [type0+'ndex'];
+    let files = [type0+'ndex'];
 
-  if(!route) {
-    files.push('overlay');
+    if(!route) {
+      files.push('overlay');
 
-    if(type === 'pc') { //ADD UNIQUE JS FILES TO MAIN
-      files.push('faces');
-      files.push('snek');
-    } else if(type === 'mobile') {
+      if(type === 'pc') { //ADD UNIQUE JS FILES TO MAIN
+        files.push('faces');
+        files.push('snek');
+      } else if(type === 'mobile') {
+
+      }
+    } else {
 
     };
 
-    return buildScripts(files)
-  } else {
-    return buildScripts(files)
-  }
+    let scripts = await buildScripts(files);
+
+    res(scripts)
+  })
 }
 
-async function buildStyles(names) {
-  let styles = [], el, check;
-  for(let i = 0; i < names.length; i++) {
-    check = await fetch(`${window.location.href}stylesheets/${names[i]}.css`);
-    if(check.status !== 200) continue;
+function buildStyles(names) {
+  return new Promise(async res => {
+    let styles = [], el, check;
+    for(let i = 0; i < names.length; i++) {
+      check = await fetch(`${window.location.href}stylesheets/${names[i]}.css`);
+      if(check.status !== 200) continue;
 
-    el = document.createElement('link');
-    el.href = `stylesheets/${names[i]}.css`;
-    el.rel = "stylesheet";
+      el = document.createElement('link');
+      el.href = `stylesheets/${names[i]}.css`;
+      el.rel = "stylesheet";
 
-    styles.push(el)
-  };
-  console.log('Styles added:', names);
-  return styles
+      styles.push(el)
+    };
+
+    console.log('Styles added:', names, styles);
+
+    res(styles)
+  })
 }
 
 function getStyles(type) {
-  let type0 = type === 'mobile' ? 'mobileI' : type === 'pc' ? 'i' : undefined;
+  return new Promise(async (res, rej) => {
+    let type0 = type === 'mobile' ? 'mobileI' : type === 'pc' ? 'i' : undefined;
 
-  if(!type0) return [];
+    if(!type0) return rej([]);
 
-  let files = [type0+'ndex'];
+    let files = [type0+'ndex'];
 
-  if(!route) {
-    if(type === 'pc') { //ADD UNIQUE CSS FILES TO MAIN
-      files.push('snek');
-    } else if(type === 'mobile') {
+    if(!route) {
+      if(type === 'pc') { //ADD UNIQUE CSS FILES TO MAIN
+        files.push('snek');
+      } else if(type === 'mobile') {
+
+      }
+    } else {
 
     };
 
-    return buildStyles(files)
-  } else {
-    return buildStyles(files)
-  }
+    let styles = await buildStyles(files);
+
+    res(styles)
+  })
 }
 
 (async () => {
+  let styles, scripts;
+
   if(mobileCheck()) {
     console.log("Using Mobile"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
-    getStyles('mobile').forEach(el => {
+    styles = await getStyles('mobile');
+    styles.forEach(el => {
       document.head.appendChild(el)
     });
 
@@ -111,13 +130,15 @@ function getStyles(type) {
 
     document.body.insertAdjacentHTML("beforeend", body.data);
 
-    getScripts('mobile').forEach(el => {
+    scripts = await getScripts('mobile');
+    scripts.forEach(el => {
       document.body.appendChild(el)
     })
   } else {
     console.log("Using PC"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
-    getStyles('pc').forEach(el => {
+    styles = await getStyles('pc');
+    styles.forEach(el => {
       document.head.appendChild(el)
     });
 
@@ -130,7 +151,8 @@ function getStyles(type) {
 
     document.body.insertAdjacentHTML("beforeend", body.data);
 
-    getScripts('pc').forEach(el => {
+    scripts = await getScripts('pc');
+    scripts.forEach(el => {
       document.body.appendChild(el)
     })
   }
