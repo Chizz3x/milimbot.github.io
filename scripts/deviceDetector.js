@@ -124,7 +124,7 @@ function getBody(type) {
       document.body.appendChild(el)
     })
   } else {
-    return console.log("Using PC"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
+    console.log("Using PC"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
     getStyles('pc').forEach(el => {
       document.head.appendChild(el)
