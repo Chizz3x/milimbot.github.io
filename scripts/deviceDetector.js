@@ -18,10 +18,6 @@ function reqBody(path) {
   })
 }
 
-function fileExists(path) {
-  fetch(path)
-}
-
 const route = window.location.pathname.split(/\//g)[1];
 
 async function buildScripts(names) {
@@ -98,11 +94,6 @@ function getStyles(type) {
   }
 }
 
-function getBody(type) {
-  if(!route) return `https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/${type}Index.html`
-    else return `https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/${route}/${type}Index.html`
-}
-
 (async () => {
   if(mobileCheck()) {
     console.log("Using Mobile"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
@@ -112,7 +103,7 @@ function getBody(type) {
     });
 
     let body = await reqBody('mobileIndex.html');
-    if(body.status === 404) body = await reqBody(getBody('mobile'));
+    if(body.status === 404) body = await reqBody(`${window.location.href}mobileIndex.html`);
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
@@ -131,7 +122,7 @@ function getBody(type) {
     });
 
     let body = await reqBody('pcIndex.html');
-    if(body.status === 404) body = await reqBody(getBody('pc'));
+    if(body.status === 404) body = await reqBody(`${window.location.href}pcIndex.html`);
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
       return
