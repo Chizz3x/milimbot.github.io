@@ -3,7 +3,7 @@ let height = document.documentElement.scrollHeight - 1100;
 let width = document.documentElement.scrollWidth;
 let stepx = (width - 200) / 5;
 let imagesCount = Math.floor(height / 220);
-let stepy = (height - 750) / imagesCount;
+let stepy = (height - 750 + 1850) / imagesCount;
 cont.style.height = height+"px";
 let Ypositions = [];
 
@@ -40,3 +40,8 @@ let faceInterval = setInterval(() => {
 function killFaceInterval() {
   clearInterval(faceInterval)
 }
+
+/*
+    For some peeps faces just load down below the webpage and leave a huge blank spot.
+    Maybe document height is somewhat retarded?
+*/

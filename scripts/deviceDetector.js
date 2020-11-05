@@ -18,32 +18,81 @@ function reqBody(path) {
   })
 }
 
+function fileExists(path) {
+  fetch(path)
+}
+
 const route = window.location.pathname.split(/\//g)[1];
 
-function buildScripts(names) {
-  let scripts = [], el;
+async function buildScripts(names) {
+  let scripts = [], el, check;
   for(let i = 0; i < names.length; i++) {
+    check = await fetch(`${window.location.href}scripts/${names[i]}.js`);
+    if(check.status !== 200) continue;
+
     el = document.createElement('script');
     el.src = `scripts/${names[i]}.js`;
+
     scripts.push(el)
   };
   return scripts
 }
 
 function getScripts(type) {
-  let type0 = type === 'mobile' ? 'mobileI' : 'i';
-  let files = [];
+  let type0 = type === 'mobile' ? 'mobileI' : type === 'pc' ? 'i' : undefined;
+
+  if(!type0) return [];
+
+  let files = [type0+'ndex'];
+
   if(!route) {
     files.push('overlay');
-    files.push(type0+'ndex');
-    if(type === 'pc') { //ADD NEW JS FILES TO MAIN
+
+    if(type === 'pc') { //ADD UNIQUE JS FILES TO MAIN
       files.push('faces');
       files.push('snek');
+    } else if(type === 'mobile') {
+
     };
+
     return buildScripts(files)
   } else {
-    files.push(type0+'ndex');
-    if(route === 'minecraft') return buildScripts(files)
+    return buildScripts(files)
+  }
+}
+
+function buildStyles(names) {
+  let scripts = [], el, check;
+  for(let i = 0; i < names.length; i++) {
+    check = await fetch(`${window.location.href}stylesheets/${names[i]}.css`);
+    if(check.status !== 200) continue;
+
+    el = document.createElement('link');
+    el.href = `stylesheets/${names[i]}.css`;
+    el.rel = "stylesheet";
+
+    scripts.push(el)
+  };
+  return scripts
+}
+
+function getStyles(type) {
+  let type0 = type === 'mobile' ? 'mobileI' : type === 'pc' ? 'i' : undefined;
+
+  if(!type0) return [];
+
+  let files = [type0+'ndex'];
+
+  if(!route) {
+    if(type === 'pc') { //ADD UNIQUE CSS FILES TO MAIN
+      files.push('snek');
+    } else if(type === 'mobile') {
+
+    };
+
+    return buildStyles(files)
+  } else {
+    return buildStyles(files)
   }
 }
 
@@ -56,14 +105,7 @@ function getBody(type) {
   if(mobileCheck()) {
     console.log("Using Mobile"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
-    [
-      (() => {
-        let el = document.createElement('link');
-        el.href = "stylesheets/mobileIndex.css";
-        el.rel = "stylesheet";
-        return el
-      })()
-    ].forEach(el => {
+    getStyles('mobile').forEach(el => {
       document.head.appendChild(el)
     });
 
@@ -80,22 +122,9 @@ function getBody(type) {
       document.body.appendChild(el)
     })
   } else {
-    console.log("Using PC"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
+    return console.log("Using PC"); //DO NOT FORGET TO REMOVE "RETURN" BEFORE PUSHING
 
-    [
-      (() => {
-        let el = document.createElement('link');
-        el.href = "stylesheets/index.css";
-        el.rel = "stylesheet";
-        return el
-      })(),
-      (() => {
-        let el = document.createElement('link');
-        el.href = "stylesheets/snek.css";
-        el.rel = "stylesheet";
-        return el
-      })()
-    ].forEach(el => {
+    getStyles('pc').forEach(el => {
       document.head.appendChild(el)
     });
 
