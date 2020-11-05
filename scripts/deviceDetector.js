@@ -35,6 +35,7 @@ async function buildScripts(names) {
 
     scripts.push(el)
   };
+  console.log('Scripts added:', names, scripts);
   return scripts
 }
 
@@ -61,8 +62,8 @@ function getScripts(type) {
   }
 }
 
-function buildStyles(names) {
-  let scripts = [], el, check;
+async function buildStyles(names) {
+  let styles = [], el, check;
   for(let i = 0; i < names.length; i++) {
     check = await fetch(`${window.location.href}stylesheets/${names[i]}.css`);
     if(check.status !== 200) continue;
@@ -71,9 +72,10 @@ function buildStyles(names) {
     el.href = `stylesheets/${names[i]}.css`;
     el.rel = "stylesheet";
 
-    scripts.push(el)
+    styles.push(el)
   };
-  return scripts
+  console.log('Styles added:', names);
+  return styles
 }
 
 function getStyles(type) {
