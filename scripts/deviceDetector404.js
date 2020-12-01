@@ -25,7 +25,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('link');
-        el.href = "stylesheets/mobileIndex404.css";
+        el.href = window.location.origin+"stylesheets/mobileIndex404.css";
         el.rel = "stylesheet";
         return el
       })()
@@ -33,7 +33,7 @@ function getBody(path) {
       document.head.appendChild(el)
     });
 
-    let body = await getBody('mobileIndex404.html');
+    let body = await getBody(window.location.origin+'/mobileIndex404.html');
     if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/mobileIndex404.html');
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
@@ -45,7 +45,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('script');
-        el.src = "scripts/mobileIndex404.js";
+        el.src = window.location.origin+"scripts/mobileIndex404.js";
         return el
       })()
     ].forEach(el => {
@@ -57,7 +57,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('link');
-        el.href = "stylesheets/index404.css";
+        el.href = window.location.origin+"/stylesheets/index404.css";
         el.rel = "stylesheet";
         return el
       })()
@@ -65,7 +65,7 @@ function getBody(path) {
       document.head.appendChild(el)
     });
 
-    let body = await getBody('pcIndex404.html');
+    let body = await getBody(window.location.origin+'/pcIndex404.html');
     if(body.status === 404) body = await getBody('https://raw.githubusercontent.com/Chizz3x/Milimbot.github.io/master/pcIndex404.html');
     if(body.status === 404 || !body.data) {
       document.body.insertAdjacentHTML("beforeend", pageNotFound);
@@ -77,7 +77,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('script');
-        el.src = "scripts/index404.js";
+        el.src = window.location.origin+"scripts/index404.js";
         return el
       })()
     ].forEach(el => {
