@@ -2,7 +2,13 @@
 
 <html>
   <head>
-    <script src="scripts/deviceDetector404.js"></script>
+    <script>
+      let devDet = document.createElement('script');
+
+      devDet.src = `${window.location.origin}/scripts/deviceDetector404.js`;
+
+      document.head.appendChild(devDet);
+    </script>
 
     <meta charset="UTF-8">
 
