@@ -1,4 +1,4 @@
-{
+const chars = {
   "10000000": "⠁",
   "10000001": "⢁",
   "10000010": "⡁",
@@ -255,4 +255,218 @@
   "01110111": "⣺",
   "01011111": "⣼",
   "01111111": "⣾"
+};
+
+let contrastSlider = document.getElementById('slider-contrast');
+let leapSlider = document.getElementById('slider-leap');
+let sizeSlider = document.getElementById('slider-size');
+
+let chosenFile;
+
+function prevDef(e) {
+  e.preventDefault();
+  e.stopPropagation();
 }
+
+function style() {
+  let el = document.getElementById('upload-box');
+  let btn = document.getElementById('upload-button');
+
+  el.classList.add('upload-box-drag-active');
+  btn.classList.add('upload-button-drag-active');
+}
+
+function unstyle() {
+  let el = document.getElementById('upload-box');
+  let btn = document.getElementById('upload-button');
+
+  el.classList.remove('upload-box-drag-active');
+  btn.classList.remove('upload-button-drag-active');
+}
+
+function greyscale(pixels) {
+  for(var i = 0; i < pixels.length; i += 4) {
+
+    let lightness = parseInt((pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3);
+
+    pixels[i] = lightness;
+    pixels[i + 1] = lightness;
+    pixels[i + 2] = lightness;
+  }
+}
+
+function contrast(imageData, contrast) {
+    let data = imageData.data;
+    contrast *= 2.55;
+    let factor = (255 + contrast) / (255.01 - contrast);
+
+    for(let i = 0; i < data.length; i += 4)
+    {
+        data[i] = factor * (data[i] - 128) + 128;
+        data[i + 1] = factor * (data[i + 1] - 128) + 128;
+        data[i + 2] = factor * (data[i + 2] - 128) + 128;
+
+    }
+    return imageData;
+}
+
+async function processImage() {
+  let img = document.getElementById('uploaded-image');
+  let out = document.getElementById('output');
+  let prev = document.getElementById('image-preview');
+
+  out.innerHTML = '';
+
+  let reader = new FileReader();
+
+  let scale = eval(sizeSlider.value) / 100;
+  let leap = eval(leapSlider.value) / 100;
+  let lines = true;
+
+  reader.onloadend = function() {
+    let image = new Image();
+
+    image.onload = function() {
+      let cnv = document.createElement('canvas');
+
+      let prevctx = prev.getContext("2d"); // preview
+      prevctx.clearRect(0, 0, prev.width, prev.height);
+      prevctx.scale(1, 0.5);
+      prevctx.drawImage(image, 0, 0);
+
+      cnv.width = image.width / 100 * eval(sizeSlider.value);
+      cnv.height = image.height / 100 * eval(sizeSlider.value);
+
+      let ctx = cnv.getContext('2d');
+      ctx.scale(scale, scale);
+      ctx.drawImage(image, 0, 0);
+
+      let imageData = ctx.getImageData(0, 0, cnv.width, cnv.height);
+
+      imageData.height *= scale;
+      imageData.width *= scale;
+
+      greyscale(imageData.data);
+      contrast(imageData, eval(contrastSlider.value));
+
+      let rowData = [];
+      let ix, r, g, b, a,
+          avg1, avg2;
+
+      let pxc = 0;
+
+      leap *= 255;
+      // FIRST BYTES ARE WRONG [2 MORE THAN NEEDED]
+      for(let y = 0; y < imageData.height; y++) {
+        ix = 0;
+
+        for(let x = imageData.width * y; x < imageData.width * y + imageData.width; x += 2) {
+          r = imageData.data[pxc];
+          g = imageData.data[pxc + 1];
+          b = imageData.data[pxc + 2];
+          a = imageData.data[pxc + 3];
+
+          pxc += 4;
+
+          avg1 = (r + g + b + a) / 4;
+
+          r = imageData.data[pxc];
+          g = imageData.data[pxc + 1];
+          b = imageData.data[pxc + 2];
+          a = imageData.data[pxc + 3];
+
+          if(!r || !g || !b || !a) console.log(r, g, b, a);
+
+          pxc += 4;
+
+          avg2 = (r + g + b + a) / 4;
+
+          rowData[ix] = !rowData[ix] ?
+            (avg1 <= leap ? '1' : '0') + (avg2 <= leap ? '1' : '0')
+          : rowData[ix] + (avg1 <= leap ? '1' : '0') + (avg2 <= leap ? '1' : '0');
+
+          ix += 1;
+        };
+
+        if(y % 4 === 0 && y !== 0) {
+          console.log(rowData);
+
+          out.innerHTML += rowData.map(m => m[6] === '0' && lines ? chars[m] : chars[m]).join('') + '\n';
+          ctx.putImageData(imageData, 0, 0);
+          document.body.appendChild(cnv);
+          rowData = [];
+        }
+      }
+    }
+
+    image.src = reader.result;
+  };
+
+  reader.readAsDataURL(chosenFile);
+}
+
+function choose(e, files) {
+  if(!!files) {
+    e = {target: {files: files}};
+    unstyle();
+  };
+
+  if(e.target.files.length > 0) {
+    let preview = document.getElementById("uploaded-image");
+
+    preview.src = URL.createObjectURL(e.target.files[0]);
+
+    document.getElementById("upload-button").innerHTML = e.target.files[0].name;
+
+    chosenFile = e.target.files[0];
+    processImage()
+  } else {
+
+  }
+}
+
+function handleDrop(e) {
+  prevDef(e);
+
+  let dt = e.dataTransfer;
+  let files = dt.files;
+
+  choose(undefined, files)
+}
+
+function draggedOver(e) {
+  prevDef(e);
+
+  style();
+}
+
+function draggedOut(e) {
+  prevDef(e)
+
+  unstyle();
+}
+
+let dropArea = document.getElementById('upload-box')
+
+dropArea.addEventListener('dragover', prevDef, false);
+dropArea.addEventListener('dragleave', draggedOut, false);
+dropArea.addEventListener('dragenter', draggedOver, false);
+dropArea.addEventListener('drop', handleDrop, false);
+
+let sliderTimeout;
+
+[
+  contrastSlider,
+  leapSlider,
+  sizeSlider
+].forEach(slider => {
+  slider.oninput = function() {
+    if(!!chosenFile) {
+      if(!!sliderTimeout) clearTimeout(sliderTimeout);
+      sliderTimeout = setTimeout(function() {
+        document.getElementById('output').innerHTML = '';
+        processImage()
+      }, 500)
+    }
+  }
+})
