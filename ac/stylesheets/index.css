@@ -1,0 +1,84 @@
+#header-container {
+  left: 0;
+  right: 0;
+  height: 200px;
+  background-color: #202225;
+  border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
+  color: #fff;
+}
+
+#bubble-box {
+  left: 0;
+  right: 0;
+  height: 200px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: absolute;
+  margin-left: 10px;
+  margin-right: 10px;
+  z-index: -1;
+}
+
+#widget {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+#header-header-text {
+  padding-top: 20px;
+  margin-top: 0
+}
+
+#ac {
+  color: rgb(200,50,200);
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+#ac:hover {
+  color: rgb(220,150,220);
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+#header-desc {
+  width: 50%;
+  margin: auto
+}
+
+#anime {
+  color: rgb(255,100,100)
+}
+
+#manga {
+  color: rgb(225,80,150)
+}
+
+#gaming {
+  color: rgb(100,100,255)
+}
+
+button,
+button:focus {
+	border: none;
+	outline: none;
+  cursor: pointer;
+}
+
+#join-btn {
+  background-color: rgb(40,40,40);
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #9ecaed;
+  color: #fff;
+  transition: box-shadow 0.5s;
+}
+
+#join-btn:hover {
+  box-shadow: 0 0 20px rgba(158,202,237,.5);
+  transition: box-shadow 0.5s;
+}

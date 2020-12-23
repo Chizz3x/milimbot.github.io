@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="../scripts/deviceDetector.js"></script>
+
+    <meta charset="UTF-8">
+    <meta property="theme-color" content="#F3188F">
+    <meta property="og:title" content="Milim.bot">
+    <meta property="og:description" content="Milim.bot commands.">
+    <meta property="og:image" content="https://github.com/Chizz3x/Milimbot.github.io/blob/master/minecraft/images/CMD.jpg?raw=true">
+    <meta property="og:site_name" content="milimbot.ml/commands">
+
+    <link rel="icon" href="https://github.com/Chizz3x/Milimbot.github.io/blob/master/images/Milim.png?raw=true">
+    <title>Milim.bot</title>
+
+    <link rel="stylesheet" href="stylesheets/index.css"></link>
+  </head>
+
+  <body style="background-color: #323232; margin: 0; overflow-x: hidden">
+    <div id='upload-container'>
+      <div id="upload-box">
+        <p id="drop-image-hint">
+          Drag and drop an image into this box<br/>
+          or click the button below
+        </p>
+        <input id="actual-upload-button" onchange="choose(event)" type="file" accept="image/jpeg,image/png" hidden/>
+        <center>
+          <label id="upload-button" for="actual-upload-button">
+            No file chosen
+          </label>
+        </center>
+      </div>
+    </div>
+
+    <br/>
+
+    <p id="image-text">Image preview</p>
+
+    <div id="uploaded-image-container">
+      <img id="uploaded-image" src="https://github.com/Chizz3x/Milimbot.github.io/blob/master/images/Milim.png?raw=true">
+      </img>
+      <canvas id="image-preview">
+      </canvas>
+    </div>
+
+    <div id="output-container">
+      <input class='slider' id='slider-size' type="range" min="1" max="100" value="100">
+      <input class='slider' id='slider-contrast' type="range" min="1" max="100" value="50"><br/>
+      <input class='slider' id='slider-leap' type="range" min="1" max="100" value="50">
+      <div id="output-box">
+        <textarea id='output' readonly></textarea>
+      </div>
+    </div>
+
+    <script src="scripts/index.js"></script>
+  </body>
+</html>

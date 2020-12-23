@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url='https://discord.gg/zG83r6M'"/>
+
+    <meta property="theme-color" content="#F3188F"/>
+    <meta property="og:title" content="Milim.bot : AnimeCord"/>
+    <meta property="og:description" content="Join Anime related server suited both for Anime and Manga fans, Milim.bot support too!"/>
+    <meta property="og:image" content="https://github.com/Chizz3x/Milimbot.github.io/blob/master/discord/images/AC_logo.png?raw=true"/>
+    <meta property="og:site_name" content="milimbot.ml/discord"/>
+
+    <link rel="icon" href="https://github.com/Chizz3x/Milimbot.github.io/blob/master/discord/images/AC_logo.png?raw=true">
+    <title>AnimeCord</title>
+  </head>
+
+  <body style="background-color:#323232;color:rgba(255,255,255,0.7);font-family:sans-serif;font-size:50px;display: flex;align-items: center;justify-content: center">
+    <p id="text">Redirecting.</p>
+  </body>
+
+  <script>
+    let el = document.getElementById('text');
+    let time = 0;
+
+    function clrInt() {
+      clearInterval(interval)
+    }
+
+    let interval = setInterval(() => {
+      time++;
+      if(time === 3) {
+        clrInt();
+        el.innerHTML = '';
+        el.insertAdjacentHTML("beforeend", 'Please follow the link below<br /><a href="https://discord.gg/zG83r6M">https://discord.gg/zG83r6M</a>');
+      } else el.innerHTML += '.'
+    }, 1000)
+  </script>
+</html>

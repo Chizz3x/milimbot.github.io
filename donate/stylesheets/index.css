@@ -1,0 +1,59 @@
+#donate-conatiner {
+  width: 500px;
+  margin: auto;
+}
+
+#paypal-box {
+  background-color: rgb(40,40,40);
+  border-radius: 25px;
+}
+
+#paypal-box table {
+  margin: auto;
+}
+
+#paypal-sub-image {
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+}
+
+#paypal-image {
+  height: 50px;
+  margin: auto;
+  display: block;
+}
+
+select {
+  background-color: rgb(45,45,45);
+  color: white;
+  border: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+#ko-fi-box,
+#patreon-box {
+  display: block;
+  text-align: center;
+}
+
+#patreon-box {
+  background-color: rgb(40,40,40);
+  border-radius: 50px;
+}
+
+#patreon-logo,
+#patreon-wordmark {
+  height: 40px;
+}
+
+.outter-text {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-family: sans-serif;
+  color: white;
+}
