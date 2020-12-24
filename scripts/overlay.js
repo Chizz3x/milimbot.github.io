@@ -83,19 +83,10 @@ let actions = [
 function end() {
   let endInt;
 
-  function clrEndInt() {
-    clearInterval(endInt)
-  }
-
-  endInt = setInterval(() => {
-    if(sessionStorage.loaded) {
-      clrEndInt();
-      let overlay = document.getElementById('overlay');
-      overlay.style.opacity = "0";
-      overlay.style['pointer-events'] = 'none';
-      doc.classList.remove('disable-scroll');
-    }
-  }, 500)
+  let overlay = document.getElementById('overlay');
+  overlay.style.opacity = "0";
+  overlay.style['pointer-events'] = 'none';
+  doc.classList.remove('disable-scroll');
 }
 
 let n = 0;
