@@ -115,21 +115,21 @@ if(window.localStorage.breach === "true") {
         text = text.split(/ /g);
 
         interval = setInterval(() => {
-          if(n === text.length) disableInterval();
+          if(n === text.length) return disableInterval();
           overlayText.innerHTML += text[n];
           if(n + 1 !== text.length) overlayText.innerHTML += ' ';
           n++;
         }, 500)
       } else {
         interval = setInterval(() => {
-          if(n === text.length) disableInterval();
+          if(n === text.length) return disableInterval();
           overlayText.innerHTML += text[n];
           n++;
         }, Math.pow(2, -(text.length - 10)) + 100)
       }
     } else {
       interval = setInterval(() => {
-        if(n === text.length) disableInterval();
+        if(n === text.length) return disableInterval();
         overlayText.innerHTML += text[n];
         n++;
       }, Math.pow(2, -(text.length - 10)) + 100)
