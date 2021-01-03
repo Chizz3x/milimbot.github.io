@@ -25,7 +25,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('link');
-        el.href = window.location.origin+"stylesheets/mobileIndex404.css";
+        el.href = window.location.origin+"/stylesheets/mobileIndex404.css";
         el.rel = "stylesheet";
         return el
       })()
