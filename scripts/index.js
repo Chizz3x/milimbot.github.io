@@ -81,6 +81,23 @@ function topTop() {
   }
 }
 
+let aboutBoxes = document.getElementsByClassName('about-box');
+let activeAboutBox = aboutBoxes[0];
+aboutBoxes[0].classList.add('aboutBoxActive');
+
+function aboutBox() {
+  for(let i = 0; i < aboutBoxes.length; i++) {
+    let abtBoxRect = aboutBoxes[i].getBoundingClientRect();
+    if(abtBoxRect.top <= window.innerHeight / 2 && abtBoxRect.height + abtBoxRect.top >= window.innerHeight / 2) {
+      if(!aboutBoxes[i].classList.contains('aboutBoxActive')) {
+        activeAboutBox.classList.remove('aboutBoxActive');
+        aboutBoxes[i].classList.add('aboutBoxActive');
+        activeAboutBox = aboutBoxes[i];
+      }
+    }
+  }
+}
+
 function toTop() {
   document.documentElement.scrollTop = 0;
 }
@@ -103,6 +120,7 @@ window.onscroll = function() {
     faces();
     moveLine();
     topTop();
+    aboutBox();
 }
 
 window.addEventListener('mousemove', e => {

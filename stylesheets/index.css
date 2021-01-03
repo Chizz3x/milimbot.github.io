@@ -775,7 +775,8 @@ button:focus {
 }
 
 .about-left:hover,
-.about-right:hover {
+.about-right:hover,
+.aboutBoxActive {
 	transform: translateX(0px);
 	opacity: 1;
 	filter: saturate(150%);

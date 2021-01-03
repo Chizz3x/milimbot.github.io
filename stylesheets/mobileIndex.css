@@ -18,6 +18,15 @@
 	}
 }
 
+.container {
+	background-color: rgba(5,5,5,0.3);
+	overflow: hidden;
+}
+
+.serif {
+	font-family: sans-serif;
+}
+
 #overlay {
 	width: 100%;
 	height: 100%;
@@ -43,7 +52,7 @@
 	bottom: 0;
 	border-right: solid 10px rgba(20,20,20,0.3);
 	z-index: 10;
-	background-color: rgba(5,5,5,0.5);
+	background-color: rgba(30,30,30,0.95);
 	width: 80%;
 	position: fixed;
 	transform: translateX(-100%)
@@ -136,7 +145,6 @@
 #invite-container {
 	width: 100%;
 	height: 1000px;
-	background-color: rgba(5,5,5,0.3);
 }
 
 .image-box {
@@ -348,8 +356,6 @@ button:focus {
 	bottom: 0;
 	height: 400px;
 	width: 100%;
-	overflow: hidden;
-	background-color: rgba(5,5,5,0.3)
 }
 
 @keyframes image5 {
@@ -394,4 +400,96 @@ button:focus {
 	height: auto;
 	margin-bottom: -80%;
 	clip-path: polygon(30% 0%, 0% 100%, 100% 100%, 90% 5%);
+}
+
+#about-text-container {
+	height: 200px;
+	font-size: 40px;
+	text-align: center;
+}
+
+#about-container {
+	height: 3500px;
+}
+
+.about-left {
+	height: auto;
+	position: relative;
+	transform: translateX(-25px);
+	transition: transform .5s, opacity .5s, filter .5s linear;
+	opacity: .5;
+	float: left;
+	filter: saturate(0%);
+}
+
+.about-right {
+	height: auto;
+	position: relative;
+	float: right;
+	margin-left: 100%;
+	transform: translateX(25px);
+	transition: transform .5s, opacity .5s, filter .5s linear;
+	opacity: .5;
+	filter: saturate(0%);
+}
+
+.about-left:hover,
+.about-right:hover,
+.aboutBoxActive {
+	transform: translateX(0px);
+	opacity: 1;
+	filter: saturate(150%);
+}
+
+.killVisuals {
+	cursor: default;
+}
+
+.about-title {
+	font-size: 50px;
+	top: 0;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.about-desc {
+	font-size: 40px;
+	top: 80px;
+	width: 80%;
+}
+
+.about-desc-left {
+	text-align: right;
+}
+
+.about-desc-right {
+	text-align: left;
+}
+
+.about-text-left {
+	right: 0;
+	color: white;
+	position: absolute;
+	margin-right: 20px;
+	font-family: sans-serif;
+}
+
+.about-text-right {
+	color: white;
+	position: absolute;
+	margin-left: 20px;
+	font-family: sans-serif;
+}
+
+.about-box {
+	width: 800px;
+	height: 645px;
+	margin-bottom: 50px;
+}
+
+.about-image {
+	width: 100%;
+	opacity: .3;
+	border-top: 15px solid;
+	border-image-slice: 1;
+	border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
 }

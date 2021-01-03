@@ -41,6 +41,10 @@ document.getElementById('menu').addEventListener('touchend', function(e) {
   };
 }, false);
 
+let aboutBoxes = document.getElementsByClassName('about-box');
+let activeAboutBox = aboutBoxes[0];
+aboutBoxes[0].classList.add('aboutBoxActive');
+
 window.addEventListener('touchmove', e => {
   let el = document.getElementById('menu'),
   menuArrow = document.getElementById('menu-arrow-box'),
@@ -55,8 +59,19 @@ window.addEventListener('touchmove', e => {
     if(menuArrow.classList.contains('menu-arrow-box-out') && el.classList.contains('menu-closed')) menuArrow.classList.remove('menu-arrow-box-out');
     el.style.transform = `translateX(${touch - el.offsetWidth}px)`;
   }
+
+	for(let i = 0; i < aboutBoxes.length; i++) {
+		let abtBoxRect = aboutBoxes[i].getBoundingClientRect();
+		if(abtBoxRect.top <= window.innerHeight / 2 && abtBoxRect.height + abtBoxRect.top >= window.innerHeight / 2) {
+			if(!aboutBoxes[i].classList.contains('aboutBoxActive')) {
+				activeAboutBox.classList.remove('aboutBoxActive');
+				aboutBoxes[i].classList.add('aboutBoxActive');
+				activeAboutBox = aboutBoxes[i];
+			}
+		}
+	}
 });
 
-window.onload = () => {
-  sessionStorage.loaded = true;
-}
+document.addEventListener("DOMContentLoaded", () => {
+	sessionStorage.loaded = true;
+})

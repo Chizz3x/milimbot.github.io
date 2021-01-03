@@ -45,7 +45,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('script');
-        el.src = window.location.origin+"scripts/mobileIndex404.js";
+        el.src = window.location.origin+"/scripts/mobileIndex404.js";
         return el
       })()
     ].forEach(el => {
@@ -77,7 +77,7 @@ function getBody(path) {
     [
       (() => {
         let el = document.createElement('script');
-        el.src = window.location.origin+"scripts/index404.js";
+        el.src = window.location.origin+"/scripts/index404.js";
         return el
       })()
     ].forEach(el => {
