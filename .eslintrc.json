@@ -1,0 +1,74 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react",
+		"@typescript-eslint"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-empty-function": "warn",
+		"@typescript-eslint/no-namespace": "off",
+		"no-delete-var": "off",
+		"indent": [
+			"warn",
+			2
+		],
+		"linebreak-style": [
+			"warn",
+			"windows"
+		],
+		"quotes": [
+			"warn",
+			"double"
+		],
+		"semi": [
+			"warn",
+			"always"
+		],
+		"no-empty": "warn",
+		"comma-style": ["warn", "last"],
+    "comma-spacing": ["warn", {
+      "before": false,
+      "after": true
+    }],
+    "no-multi-spaces": "warn",
+    "array-bracket-spacing": [
+      "warn",
+      "always", {
+				"singleValue": false
+		}],
+    "object-curly-spacing": ["warn", "always"],
+		"object-curly-newline": ["warn", {
+			"minProperties": 4,
+			"multiline": true
+		}],
+		"object-property-newline": ["warn", {
+			"allowAllPropertiesOnSameLine": false
+		}],
+    "array-bracket-newline": ["warn", {
+      "multiline": true
+    }],
+		"function-call-argument-newline": ["warn", "consistent"]
+	}
+}
