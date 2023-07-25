@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://milimbot.com/static/css/main.98ec47ca.css",
+    "main.js": "https://milimbot.com/static/js/main.c27805d0.js",
+    "index.html": "https://milimbot.com/index.html",
+    "main.98ec47ca.css.map": "https://milimbot.com/static/css/main.98ec47ca.css.map",
+    "main.c27805d0.js.map": "https://milimbot.com/static/js/main.c27805d0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98ec47ca.css",
+    "static/js/main.c27805d0.js"
+  ]
+}
