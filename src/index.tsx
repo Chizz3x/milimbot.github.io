@@ -1,6 +1,8 @@
+import "react-toastify/dist/ReactToastify.css";
+import "./global.css";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "react-toastify/dist/ReactToastify.css";
 import Index from "./pages";
 import { ToastContainer } from "react-toastify";
 import GlobalStyle from "./style";
