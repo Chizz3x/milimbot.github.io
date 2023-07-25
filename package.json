@@ -10,7 +10,8 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
     "deploy-fix": "gh-pages-clean gh-pages -d build",
-    "lint": "eslint src --ext .ts,.tsx"
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [

@@ -45,6 +45,5 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-
 IF gh-pages DOES NOT WORK, USE gh-pages-clean IN FRONT OF IT FIRST AND THEN SWITCH BACK.
 OR IN SHORT JUST RUN `npm run deploy-fix`
