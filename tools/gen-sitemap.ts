@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import dotenv from "dotenv";
-import { ROUTES } from "../routes";
+import { ROUTES } from "../src/routes";
 import prettier from "prettier";
 
 const env = dotenv.config({ path: path.resolve(".env") }).parsed || {};
